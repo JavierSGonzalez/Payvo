@@ -1,11 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Texto a la Derecha</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative; 
+      overflow: hidden;   
+    }
+
+   .circulo-fondo {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 70%;     
+  height: 150%;    
+  background-color: #007BFF;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+    .cuadro-central {
+      position: relative;
+      width: 80%;
+      height: 80%;
+      background-color: #ffffff;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      padding: 40px;
+      overflow: auto;
+      text-align: right;
+      z-index: 1;
+    }
+  </style>
 </head>
 <body>
-    
+  <div class="circulo-fondo"></div>
+
+  <div class="cuadro-central">
+    <h1>Create account</h1>
+    <p>Create your free account and start your journey with your AI-powered financial assistant.</p>
+  </div>
 </body>
 </html>
+
+
+
