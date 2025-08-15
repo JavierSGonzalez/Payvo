@@ -4,9 +4,27 @@
 
 .header{
     background-color: white;
+    height: 70px;
+    width: 1360px;
+    display: flex;
+    align-items: center;
 }
 
-.logo{
+.logohead{
     width: 49px;
     height: 52px;
+    position: relative;
+    left: 29px;
+}
+
+.headelemnts p{
+   margin-right: 45px;
+}
+
+.headelemnts {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    left: 328px;
 }
