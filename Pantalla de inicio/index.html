@@ -4,20 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body class="body">
-    <header class="header">
-        <img src="img/Logo.png" alt="" class="logohead">
-        <div class="headelemnts">
-            <p>Advice</p>
-            <p>Income</p>
-            <p>Expenses</p>
-            <p>Svings Plan</p>
-            <p>Emergency Fund</p>
-            <p>Premiun</p>
+    <body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white font-sans">
+
+    <!-- HEADER -->
+    <header class="w-full bg-white py-2 shadow-md">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6">
+            <div class="flex items-center space-x-2">
+                <img src="img/LogoAzul.png" alt="" class="h-[49px] w-auto">
+            </div>
+
+            <nav class="hidden md:flex space-x-6 text-black">
+                <a href="#" class="hover:text-green-500">Advice</a>
+                <a href="#" class="hover:text-green-500">Income</a>
+                <a href="#" class="hover:text-green-500">Expenses</a>
+                <a href="#" class="hover:text-green-500">Savings Plan</a>
+                <a href="#" class="hover:text-green-500">Emergency Fund</a>
+            </nav>
+
+            <div class="flex items-center space-x-6">
+                <div class="w-6 h-6">
+                    <img src="img/notifications.png" alt="">
+                </div>
+                <div class="w-6 h-6">
+                    <img src="img/settings.png" alt="">
+                </div>
+                <div class="w-6 h-6">
+                    <img src="img/perfil.png" alt="">
+                </div>
+            </div>
         </div>
     </header>
+
+    <section class="text-center py-16 px-6">
+        <div class="flex justify-center items-center space-x-2 mb-4">
+            <img src="img/LogoBlanco (2).png" alt="Logo Blanco" class="h-6 w-auto">
+            <p class="text-white text-lg font-semibold">Premium</p>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Go Premium. Take control of your</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">finances.</h1>
+        <p class="max-w-2xl mx-auto text-gray-400 mb-6">
+            Unlock powerful AI insights, personalized reports, and exclusive tools to master your money.
+        </p>
+        <button class="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-3 rounded-lg">
+            Try 1 month free
+        </button>
+        <p class="text-gray-500 text-sm mt-2">
+        We'll send you a reminder 7 days before your trial ends. Recurring billing starts after the trial period. 
+        </p>
+        <span class="text-[#3ED598] font-semibold text-sm mt-2">Terms apply</span>
+    </section>
+
 </body>
 <script src="main.py"></script>
 </html>
