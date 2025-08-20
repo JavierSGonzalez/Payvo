@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-    <body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white font-sans">
+    <body class="bg-neutral-300 text-white font-sans">
 
     <!-- HEADER -->
     <header class="w-full bg-white py-2 shadow-md">
@@ -40,23 +40,50 @@
 
     <section class="text-center py-16 px-6">
         <div class="flex justify-center items-center space-x-2 mb-4">
-            <img src="img/LogoBlanco (2).png" alt="Logo Blanco" class="h-6 w-auto">
-            <p class="text-white text-lg font-semibold">Premium</p>
+            <p class="text-black text-lg font-semibold">Payvo App</p>
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Go Premium. Take control of your</h1>
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">finances.</h1>
-        <p class="max-w-2xl mx-auto text-gray-400 mb-6">
-            Unlock powerful AI insights, personalized reports, and exclusive tools to master your money.
+        <h1 class="text-4xl text-slate-900 md:text-5xl font-bold mb-4">Hello, I’m Payvo. Your</h1>
+        <div class="flex justify-center">
+            <h1 class="text-4xl text-slate-900 md:text-5xl font-bold mb-4">personal.</h1>
+            <h1 class="text-4xl text-emerald-500 md:text-5xl font-bold mb-4">money brain.</h1>
+        </div>
+        <p class="max-w-3xl mx-auto text-neutral-800 mb-6">
+            Let’s take control of your money together — starting today. <br>
+            Track what comes in, where it goes, and build the future you <br>
+            want.
         </p>
-        <button class="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-3 rounded-lg">
-            Try 1 month free
-        </button>
-        <p class="text-gray-500 text-sm mt-2">
-        We'll send you a reminder 7 days before your trial ends. Recurring billing starts after the trial period. 
-        </p>
-        <span class="text-[#3ED598] font-semibold text-sm mt-2">Terms apply</span>
-    </section>
+        
+        <section class="grid md:grid-cols-3 gap-6">
 
+            <div class="bg-white rounded-xl p-6 shadow text-black" style="width: 155%;">
+                <p><span class="font-semibold flex justify-start">This month income</p>
+                <img src="img/Grafica1.png" alt="" class="w-40">
+                <p><span class="font-semibold">Safety Threshold:</span> $200.00</p>
+                <p><span class="font-semibold">Status:</span> <span class="text-green-600 font-semibold">Safe zone</span></p>
+                <p><span class="font-semibold">Progress:</span> 48.75%</p>
+
+                <div class="w-40 bg-gray-200 rounded-lg h-4 my-3">
+                    <div class="bg-blue-950 h-4 rounded-lg" style="width: 90%;"></div>
+                </div>
+
+                <p class="text-xs text-gray-500 flex justify-start">You earned $370 more than you <br> spent.
+                    Nice growth compared to</p>
+
+                <p class="text-xs text-gray-500 flex justify-start">last month!</p>
+            </div>
+            <div class="absolute left-10 bg-white rounded-xl p-6 shadow text-black">
+                <p><span class="font-semibold">Current Balance:</span> $390.00</p>
+                <p><span class="font-semibold">Safety Threshold:</span> $200.00</p>
+                <p><span class="font-semibold">Status:</span> <span class="text-green-600 font-semibold">Safe zone</span></p>
+                <p><span class="font-semibold">Progress:</span> 48.75%</p>
+
+                <p class="text-xs text-gray-500 flex justify-start">You reduced your spending by<br>$60. Well done staying under</p>
+
+                <p class="text-xs text-gray-500 flex justify-start">your limit!</p>
+            </div>
+            
+        </section>
+    </section>
 </body>
 <script src="main.py"></script>
 </html>
