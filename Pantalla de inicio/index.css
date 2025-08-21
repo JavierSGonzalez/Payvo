@@ -2,3 +2,30 @@
     position: absolute;
     left: 690px;
 }
+
+.info1{
+    position: absolute;
+    top: 422px;
+    right: 840px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.money{
+    position: absolute;
+    top: 100px;
+    left: 200px;
+}
+
+.plusmoney{
+    position: absolute;
+    top: 100px;
+    left: 190px;
+}
+
+.porcentajeBar{
+    position: absolute;
+    top: 167px;
+    left: 200px;
+}
