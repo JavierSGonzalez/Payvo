@@ -94,3 +94,30 @@
     top: 135px;
     left: 300px;
 }
+
+.agregar{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.addicon{
+    border-radius: 5px;
+    align-content: center;
+}
+
+.porcentajeBar3{
+    position: absolute;
+    top: 135px;
+    left: 740px;
+}
+
+.estado span{
+    display: flex;
+    align-items: center;
+    word-spacing: 5px;
+}
+
+.spaced-word {
+    letter-spacing: 0.2rem; 
+}
