@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-200 font-sans">
+    <!-- HEADER -->
+    <header class="w-full bg-white py-2 shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6">
+        <div class="flex items-center space-x-2">
+            <img src="img/LogoAzul.png" alt="" class="h-[49px] w-auto">
+        </div>
+
+        <nav class="hidden md:flex space-x-6 text-black">
+            <a href="#" class="hover:text-green-500">Advice</a>
+            <a href="#" class="hover:text-green-500">Income</a>
+            <a href="#" class="hover:text-green-500">Expenses</a>
+            <a href="#" class="hover:text-green-500">Savings Plan</a>
+            <a href="#" class="hover:text-green-500">Emergency Fund</a>
+        </nav>
+
+        <div class="flex items-center space-x-6">
+            <div class="w-6 h-6">
+                <img src="img/notifications.png" alt="">
+            </div>
+            <div class="w-6 h-6">
+          <img src="img/settings.png" alt="">
+        </div>
+        <div class="w-6 h-6">
+          <img src="img/perfil.png" alt="">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <section class="bg-blue-50 rounded-xl shadow p-6 flex flex-col items-center">
+      <img src="img/UsuariaExample.jpg" class="rounded-full w-40 h-40 mb-4" alt="Profile">
+      <h2 class="font-semibold text-lg text-gray-800 text-center">Ashley Gissell Barrientos Paiz</h2>
+      <p class="text-sm text-gray-500">gissellpaiz12@gmail.com</p>
+      <p class="text-sm text-gray-500">+503 7008 8525</p>
+
+      <span class="mt-3 inline-block bg-blue-600 text-white text-xs px-3 py-1 rounded-lg">
+        El Salvador - USD ($)
+      </span>
+
+      <div class="mt-6 w-full text-sm text-gray-600 space-y-2">
+        <p class="flex items-center gap-2">
+          <img src="img/occupi.png" alt="Occupation" class="w-5 h-5">
+          <strong class="text-blue-900">Occupation:</strong> University student, part-time cashier
+        </p>
+        <p class="flex items-center gap-2">
+          <img src="img/gender.png" alt="Gender" class="w-5 h-5">
+          <strong class="text-blue-900">Gender:</strong> Female
+        </p>
+        <p class="flex items-center gap-2">
+          <img src="img/Address.png" alt="Address" class="w-5 h-5">
+          <strong class="text-blue-900">Address:</strong> San Salvador, El Salvador
+        </p>
+      </div>
+    </section>
+
+    <section class="col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="flex flex-col space-y-6">
+
+        <div class="bg-blue-50 rounded-xl shadow p-6 flex justify-between items-center">
+          <div>
+            <h3 class="font-semibold text-gray-800 mb-2"><span class="text-blue-500">Inco</span>mes</h3>
+            <p class="mt-2 text-gray-800 font-semibold">
+              <span class="text-blue-500 mr-2">•</span> Salary: <span class="font-medium">$800</span>
+            </p>
+            <p class="mt-2 text-gray-800 font-semibold">
+              <span class="text-blue-500 mr-2">•</span> Freelance: <span class="font-medium">$400</span>
+            </p>
+            <p class="mt-2 text-gray-800 font-semibold">
+              <span class="text-blue-500 mr-2">•</span> Total Incomes: <span class="font-medium">1,200</span>
+            </p>
+
+            <a href="#" class="text-blue-500 text-sm mt-2 inline-block">View All Incomes</a>
+          </div>
+          <div class="w-20 h-20 rounded-full border-4 border-green-500 flex items-center justify-center">
+            <span class="text-green-600 font-bold">+1,200</span>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 rounded-xl shadow p-6 flex justify-between items-center">
+          <div>
+            <h3 class="font-semibold text-blue-500 mb-2"><span class= "text-gray-800">Expen</span>ses</h3>
+            <p class="mt-2 text-gray-800 font-semibold">
+              <span class="text-blue-500 mr-2">•</span> Rent: <span class="font-semibold">$500</span>
+            </p>
+            <p class="mt-2 text-gray-800 font-semibold">
+              <span class="text-blue-500 mr-2">•</span>Entertainment: <span class="font-semibold">$100</span></p>
+            <p class="mt-2 text-gray-800 font-semibold">
+              <span class="text-blue-500 mr-2">•</span>Total Expenses: 600</p>
+          </div>
+
+          <div class="w-20 h-20 rounded-full border-4 border-red-500 flex items-center justify-center">
+            <span class="text-red-600 font-bold">-222</span>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-blue-600 mb-3">Financial <span class="text-gray-800">goals</span></h3>
+          <p class="text-gray-600 text-sm mb-2"><strong>Emergency Fund:</strong> $1,000 (50% completed)</p>
+          <div class="w-full bg-gray-200 rounded-full h-3">
+            <div class="bg-blue-600 h-3 rounded-full w-1/2"></div>
+          </div>
+          <p class="text-right text-sm text-gray-500 mt-1">50%</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col space-y-6">
+
+        <div class="bg-blue-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-gray-800 mb-4">Extra <span class="text-blue-500">finance</span> features</h3>
+          <p class="text-gray-600 mb-4">
+            <span class="text-blue-500 mr-2">•</span><strong>Favorite Payment Methods:</strong> Visa, PayPal
+          </p>
+          <div class="flex gap-4 mb-6">
+            <div class="w-20 h-10 bg-gray-200 rounded flex items-center justify-center">
+              <img src="img/Visa-Platinum.png" alt="">
+          </div>
+          <div class="w-20 h-10 bg-gray-200 rounded flex items-center justify-center">
+            <img src="img/pay-pal.png" alt="">
+          </div>
+        </div>
+
+          <p class="text-gray-600 mb-4 ">
+            <span class="text-blue-500 mr-2">•</span><strong>Active Subscriptions:</strong> Netflix, Spotify, Gym Membership
+          </p>
+
+          <p class="text-gray-600 mb-4">
+            <span class="text-blue-500 mr-2">•</span><strong>Financial Tips Received:</strong> 15 tips this month
+          </p>
+          <div class="w-full h-10 bg-gray-200 rounded mt-3 flex items-center justify-center mb-3">
+            <img src="" alt="">
+          </div>
+        </div>
+
+        <div class="bg-blue-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-gray-800 mb-4">Subscription <span class="text-blue-500">status</span></h3>
+          <p class="text-gray-600">
+            <span class="text-blue-500 mr-2">•</span><strong>Plan:</strong> Premium
+          </p>
+          <p class="text-gray-600">
+            <span class="text-blue-500 mr-2">•</span><strong>Benefits:</strong> Personalized Counter, Savings Cushion
+          </p>
+          <button class="mt-3 bg-blue-950 text-white px-4 py-2 rounded-lg font-medium">Premium</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Chat Bot Button -->
+  <a href=""class="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity"style="background-color: rgba(62, 213, 152, 0.6);">
+    <img src="img/bot.png" alt="Chat Bot" class="w-8 h-8">
+  </a>
+</body>
+</html>
