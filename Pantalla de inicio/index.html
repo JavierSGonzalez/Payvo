@@ -199,10 +199,10 @@
     <section class="blocks grid md:grid-cols-3 gap-6">
 
         <div class="bg-white rounded-xl p-6 shadow">
-            <p><span class="font-semibold text-black">Current Balance:</span> $390.00</p>
-            <p><span class="font-semibold text-black">Safety Threshold:</span> $200.00</p>
-            <p><span class="font-semibold text-black">Status:</span> <span class="text-green-600 font-semibold">Safe zone</span></p>
-            <p><span class="font-semibold text-black flex justify-start">Progress:</span></p>
+            <span class="font-bold text-black flex justify-start">Savings Goal</span>
+            <p class="text-black flex justify-start"><span class=" text-black  flex justify-start">Total Saved:</span> $340.00</p>
+            <p class="text-black  flex justify-start"><span class=" text-black  flex justify-start">Goal: </span> <span class="text-black">$500.00</span></p>
+            <p><span class=" text-black flex justify-start">Progress:</span></p>
         
             <div class="w-60 bg-gray-200 rounded-lg h-8 my-3">
                 <div class="bg-blue-950 h-8 rounded-lg" style="width: 65.75%"></div>
@@ -212,20 +212,39 @@
                 <p class="flex justify-start text-black">68%</p>
             </div>
 
-            <p class="text-xs text-gray-500">This fund is reserved for emergencies only. It does not include your savings balance.</p>
-            <p class="text-xs text-gray-400 mt-2">Last Update: Aug 1, 2025</p>
+            <div class="agregar">
+                <div class="addicon bg-[#3ED598] w-10 h-10">
+                    <p class="font-bold text-white">+</p>
+                </div>
+                <p class="flex justify-start font-semibold text-black">Add Savings</p>
+            </div>
+            <span class="text-[#3ED598] font-semibold text-sm mt-2">View details</span>
         </div>
 
-        <div class="bg-white rounded-xl p-6 shadow md:col-span-2 flex items-center">
-            <div class="flex-1">
-                <h1 class="font-semibold md:text-3xl text-lg mb-6">Using your emergency fund responsibly</h1>
-                <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                    <li><span class="text-green-600 font-semibold">Only</span> use for <span class="text-green-600 font-semibold">true</span> emergencies</li>
-                    <li>Avoid using for <span class="text-green-600 font-semibold">non-essential</span> spending</li>
-                    <li><span class="text-green-600 font-semibold">Rebuild</span> the fund as <span class="text-green-600 font-semibold">soon</span> as possible</li>
-                </ul>
+        <div class="bg-white rounded-xl p-6 shadow">
+            <span class="font-bold text-black flex justify-start">Emergency Fund</span>
+            <p class="text-black flex justify-start"><span class=" text-black  flex justify-start">Current Balance: </span> $390.00</p>
+            <p class="text-black  flex justify-start"><span class=" text-black  flex justify-start">Safety Threshold: </span> <span class="text-black">$200.00</span></p>
+
+            <div class="estado flex justify-start">
+                <p class="flex justify-start text-black font-semibold"><span class="font-semibold text-[#3ED598] flex justify-start rotate-90">^</span>Status:</p>
+                <div>
+                    <p class="flex justify-start text-black ">You're in the<span class=" text-[#3ED598] flex justify-start tracking-wide">safe</span> zone.</p>
+                </div>
             </div>
-            <img src="img/OIP.webp" alt="Fondo de emergencia" class="w-40 ml-6">
+
+            <p><span class=" text-black flex justify-start">Progress:</span></p>
+        
+            <div class="w-60 bg-gray-200 rounded-lg h-8 my-3">
+                <div class="bg-blue-950 h-8 rounded-lg" style="width: 48.75%"></div>
+            </div>
+
+            <div class="porcentajeBar3">
+                <p class="flex justify-start text-black">48.75%</p>
+            </div>
+
+            <p class="text-xs text-gray-500">This fund is your backup. Keep it available and untouched unless truly necessary.</p>
+            <span class="text-[#3ED598] font-semibold text-sm mt-2">View details</span>
         </div>
     </section>
 
