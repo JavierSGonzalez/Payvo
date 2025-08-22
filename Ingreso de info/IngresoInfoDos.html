@@ -4,22 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <title>Payvo</title>
 </head>
 <body>
 
-    <div class="text-4xl font-semibold flex justify-center mt-16">
+    <div class="text-4xl font-bold flex justify-center mt-16">
         <h1>Your Sources of Income</h1>
     </div>
 
     <div class="flex flex-col mt-10">
-        <label class="font-medium ml-119" for="text">Source name</label>
-        <input class="border border-stone-300 rounded-lg py-2 mx-118 mt-2" type="text">
+        <label class="font-medium ml-110 text-lg" for="text">Source name</label>
+        <input class="border border-stone-300 rounded-lg py-2 mx-110 mt-2" type="text">
     </div>
 
     <div class="flex flex-col mt-3">
-        <label class="font-medium ml-119 " for="input">Monthly amount</label>
-        <input class="border border-stone-300 rounded-lg py-2 mt-2 mx-118" type="text" name="" id="">
+        <label class="font-medium ml-110 text-lg" for="input">Monthly amount</label>
+        <input class="border border-stone-300 rounded-lg py-2 mt-2 mx-110" type="text" name="" id="">
     </div>
+
+    <div class="flex flex-col mt-3">
+
+        <label class="font-medium ml-110 text-lg" for="input">Payment frequency</label>
+
+        <div class="ml-100 mt-3">
+            <select class="border border-stone-300 py-2 px-38 ml-10 rounded-lg" name="" id="">
+                <option value="Weekly">Weekly</option>
+                <option value="Biweekly">Biweekly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Occasional">Occasional</option>
+            </select>
+        </div>
+
+
+    <div class="mt-3">
+        <div class="flex flex-col">
+        <label class="font-medium ml-110 text-lg" for="Payment-date">Usual payment day</label>
+        <input class="mt-3 border border-stone-300 rounded-lg py-2 mx-110 flex justify-center" type="text" id="Payment-date" placeholder="Choose a day">
+        </div>
+
+        
+         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script>
+                flatpickr("#Payment-date",{
+                    dateFormat: "Y-m-d",
+                    altInput: true,
+                    altFormat: "F j, Y",
+                    defaultDate: "today"
+                })
+        </script>
+        
+        <div class="ml-110 mt-4">
+            <label class="font-medium " for="Usual-payment">
+            <input type="checkbox" name="" id="Usual-payment">
+            Usual payment date
+            </label>
+        </div>
+
+        <div class="mt-7">
+            <a href="">
+            <h1 class="text-stone-500 ml-110 font-medium">
+                Have more income sources?
+            </h1>
+            </a>
+        </div>
+
+    </div>
+
+    </div>
+
 </body>
 </html>
