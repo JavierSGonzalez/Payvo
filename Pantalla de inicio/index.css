@@ -1,6 +1,7 @@
 .move{
     position: absolute;
     left: 690px;
+    width: 17.5%;
 }
 
 .info1{
@@ -28,4 +29,68 @@
     position: absolute;
     top: 167px;
     left: 200px;
+}
+
+.info2{
+    position: absolute;
+    top: 8%;
+    right: -190px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.money2{
+    position: absolute;
+    top: 30px;
+    left: 200px;
+}
+
+.plusmoney2{
+    position: absolute;
+    top: 30px;
+    left: 190px;
+}
+
+.pagos{
+    position: absolute;
+    top: 95px;
+    left: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tabla{
+    position: relative;
+    top: 150px;
+    width: 1250px;
+    border-radius: 15px;
+}
+
+.noti{
+    position: relative;
+    top: 75px;
+}
+
+.box{
+    position: relative;
+    top: 175px;
+}
+
+.tabtext{
+    top: 150px;
+    display: flex;
+    justify-content: start;
+}
+
+.blocks{
+    position: relative;
+    top: 250px;
+}
+
+.porcentajeBar2{
+    position: absolute;
+    top: 135px;
+    left: 300px;
 }
