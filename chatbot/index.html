@@ -1,11 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
+<body class="h-screen" style="background-image: linear-gradient(225deg, #FFFFFF 5%, #EBFAFF 20%, #CEF4FF 50%, #B6EEFF 100%);">
+
+  <div class="flex h-full">
+    <!-- Barra -->
+    <aside class="w-[217.61px] h-[674px] bg-[#EEF9FF] text-black p-4 shadow-lg flex flex-col justify-between">
+      
+      <!-- Contenido de la barra -->
+      <div>
+        <!-- Íconos superiores con más separación -->
+        <div class="flex justify-between items-center w-full gap-6 mb-6">
+          <img src="img/Logo (1).png" alt="Logo" class="w-7 h-9">
+          <img src="img/Desplegar.png" alt="Desplegar" class="w-6 h-6">
+        </div>
+
+        <!-- Menú principal -->
+        <ul class="space-y-2 mb-4">
+          <li>
+            <button class="bg-[#D7E0FF] hover:bg-blue-200 text-[#232E51] font-medium px-4 py-2 rounded-lg w-full text-left shadow-sm">
+              Nuevo chat
+            </button>
+          </li>
+          <li>
+            <button class="bg-[#E9F2F5] hover:bg-blue-100 text-[#232E51] font-medium px-4 py-2 rounded-lg w-full text-left shadow-sm">
+              Buscar
+            </button>
+          </li>
+          <li>
+            <button class="bg-[#D7E0FF] hover:bg-blue-200 text-[#232E51] font-medium px-4 py-2 rounded-lg w-full text-left shadow-sm">
+              Biblioteca
+            </button>
+          </li>
+          <li>
+            <button class="bg-[#E9F2F5] hover:bg-blue-100 text-[#232E51] font-medium px-4 py-2 rounded-lg w-full text-left shadow-sm">
+              Consejos
+            </button>
+          </li>
+        </ul>
+
+        <!-- Sección de notificaciones más arriba -->
+        <div class="mt-4">
+          <h2 class="text-lg font-bold mb-3">Chats</h2>
+
+          <!-- Today -->
+          <div class="mb-4">
+            <h3 class="text-xs font-semibold text-[#494949] tracking-wide mb-1">Today</h3>
+            <div class="border-t border-[#C2D1E0] mb-2"></div>
+            <div class="space-y-1">
+              <div class="text-sm text-[#232E51] px-3 py-2 bg-[#DCDCDC] rounded-lg shadow-md cursor-pointer">
+                Help
+              </div>
+            </div>
+          </div>
+
+          <!-- Yesterday -->
+          <div class="mb-4">
+            <h3 class="text-xs font-semibold text-[#232E51] tracking-wide mb-1">Yesterday</h3>
+            <div class="border-t border-[#C2D1E0] mb-2"></div>
+            <div class="space-y-1">
+              <div class="text-sm text-[#232E51] px-3 py-2 hover:bg-[#E9F2F5] rounded-lg cursor-pointer transition duration-200">
+                Bought groceries for $35
+              </div>
+              <div class="border-t border-[#C2D1E0] mb-2"></div>
+              <div class="text-sm text-[#232E51] px-3 py-2 hover:bg-[#E9F2F5] rounded-lg cursor-pointer transition duration-200">
+                Can I afford to buy shoes?
+              </div>
+                    <!-- Perfil abajo -->
+                <div class="flex flex-col items-center mb-4">
+                    <img src="img/Perfil.png" alt="Perfil" class="w-50 h-11 object-cover shadow-lg mb-2">
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- plus -->
+<main class="flex-1 flex flex-col justify-between px-8 py-6 relative">
+
+  <div class="flex justify-center mb-6">
+  <button class="bg-[#D7E0FF] hover:bg-blue-200 text-[#232E51] font-semibold px-4 py-2 rounded-xl border border-[#232E51] flex items-center gap-2 shadow-md">
+    <img src="img/Frame (6).png" alt="" class="w-5 h-5"> Get Plus
+  </button>
+</div>
+
+<!-- Botón Help -->
+<div class="flex justify-end mb-6">
+  <button class="bg-[#E9F2F5] hover:bg-blue-100 text-[#232E51] font-medium px-4 py-2 rounded-xl shadow-md">
+    Help
+  </button>
+</div>
+  <!-- Mensaje del asistente -->
+  <div class="p-6 max-w-xl">
+    <h1 class="text-[#232E51] text-base leading-relaxed">
+      Of course—I'm here for you 😊. Could you tell me a bit more about what you need help with?
+    </h1>
+  </div>
+
+  <!-- Campo de entrada -->
+  <div class="mt-8 flex items-center gap-4">
+    <input type="text" placeholder="Type your message..." class="flex-1 px-4 py-3 rounded-xl border border-[#C2D1E0] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D7E0FF]">
+
+  </div>
+</main>
+
+  </div>
+
+  
+
 </body>
 </html>
