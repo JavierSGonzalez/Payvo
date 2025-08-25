@@ -1,39 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<script src="https://cdn.tailwindcss.com"></script>
-<body class="bg-gray-200 font-sans">
-    <!-- HEADER -->
-    <header class="w-full bg-white py-2 shadow-md">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6">
-        <div class="flex items-center space-x-2">
-            <img src="img/LogoAzul.png" alt="" class="h-[49px] w-auto">
-        </div>
+<body class="font-sans bg-white m-0 p-0">
 
-       <nav class="hidden md:flex items-center px-6 py-4 bg-white">
-  <a href="#" class="logo">
-    <img src="../imagenes/Logo.png" alt="logo" class="imagen" />
-  </a>
-  <a href="#" class="hover:text-green-500 mx-2">Income</a>
-  <a href="#" class="hover:text-green-500 mx-2">Expenses</a>
-  <a href="#" class="hover:text-green-500 mx-2">Savings Plan</a>
-  <a href="#" class="hover:text-green-500 mx-2">Emergency Fund</a>
-  <a href="#" class="hover:text-green-500 mx-2">Premium</a>
-</nav>
-
-        <style>
+  <!-- HEADER / NAVBAR -->
+  <header class="w-full bg-white py-4 shadow-md relative">
+    <!-- LOGO en esquina izquierda -->
+    <img src="../imagenes/Logo.png" alt="Logo" class="h-[55px] w-auto absolute top-0 left-0 m-2" />
 
 
-.logo {
-  margin-right: auto; /* Esto empuja el logo completamente a la izquierda */
- width: 60px;
-}
+      <div class="absolute top-0 right-0 m-2 flex items-center space-x-4">
+      <img src="../premium/img/notifications.png" alt="Notificaciones" class="w-6 h-6" />
+      <img src="../premium/img/settings.png" alt="Settings" class="w-6 h-6" />
+      <img src="../premium/img/perfil.png" alt="Perfil" class="w-6 h-6" />
+    </div>
 
-        </style>
+    <!-- NAVEGACIÓN centrada -->
+    <nav class="flex justify-center space-x-6">
+      <a href="#" class="hover:text-green-500">Income</a>
+      <a href="#" class="hover:text-green-500">Expenses</a>
+      <a href="#" class="hover:text-green-500">Savings Plan</a>
+      <a href="#" class="hover:text-green-500">Emergency Fund</a>
+      <a href="#" class="hover:text-green-500">Premium</a>
+    </nav>
+    
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="flex h-screen" style="background-color: #312D2D;">
+
+    <aside class="w-1/4 p-6 border-r border-gray-500">
+    <h1 class="text-2xl font-bold text-white">Settings</h1>
+   <div>
+
+      <input type="text" 
+      placeholder="Search configuration"
+      class="w-50 px-4 py-2 bg-[#312D2D] text-white border border-white rounded-lg placeholder-gray-400 focus:outline-none focus: ring-white ">
+    </div>
+
+   
+  <!-- Aquí va el SVG copiado desde Figma -->
+<div class="flex items-center text-white">
+  <img src="" alt="Account icon" class="w-5 h-5 mr-2">
+    <!-- contenido del SVG copiado desde Figma -->
+  </svg>
+  <p>Account</p>
+</div>
+   <p class="text-white mt-2">Notifications</p>
+   <p class="text-white mt-2">Finance Preferences</p>
+   <p class="text-white mt-2">Privacy & Security</p>
+   <p class="text-white mt-2">Premium</p>
+   <p class="text-white mt-2">general</p>
+   </aside>
+   
+   <section class="flex-1 p-6 text-white">
+    <h2 class="text-xl font-bold">Account settings</h2>
+    <h2 class="text-xl font-bold">Profile</h2>
+  <div class="bg-[#312D2D] border border-black rounded-lg p-6 text-white flex justify-between items-start">
+
+  <!-- Izquierda: Imagen + texto en columna -->
+  <div class="flex items-start">
+    <img src="preview-Photoroom.png" alt="" width="100" class="mr-4">
+    <div class="flex flex-col justify-start">
+      <h2 class="text-xl font-bold">Ashley</h2>
+      <p>gissellepaiz12@gmail.com</p>
+      <p class="text-xl font-bold text-green-500">Administrar cuenta</p>
+    </div>
+  </div>
+
+  <!-- Derecha: Cuadros + Rectángulo en una fila -->
+  <div class="flex items-center space-x-4">
+    <!-- 2 cuadros -->
+
+ 
+
+    <div class="w-8 h-8 bg-[#312D2D]  border border-white rounded-md flex items-center justify-center font-semibold"></div>
+     <div class="w-8 h-8 bg-[#312D2D]  border border-white rounded-md flex items-center justify-center font-semibold"></div>
+
+    <!-- Rectángulo con texto -->
+    <div class="w-20 h-9 bg-[#312D2D] border border-white rounded-md flex items-center justify-center text-white text-sm font-semibold">
+      Log out
+    </div>
+  </div>
+
+
+</div>
+<div class="w-[1000px] bg-[#312D2D]  border border-black text-white rounded-2xl shadow-lg p-6">
+  <!-- Full Name -->
+  <div class="flex justify-between items-center py-3">
+    <span>Full name</span>
+    <span>&gt;</span>
+  </div>
+ 
+  <!-- Email -->
+  <div class="flex justify-between items-center py-3">
+    <span>Email</span>
+    <span>&gt;</span>
+  </div>
+ 
+  <!-- Phone -->
+  <div class="flex justify-between items-center py-3">
+    <span>Phone</span>
+    <span>&gt;</span>
+  </div>
+</div>
+
+      
+    </div>
+  </div>
+  <h2 class="text-xl font-bold">Change your password to keep your account secure.</h2>
+  <div class="w-[1000px] bg-[#312D2D]  border border-black text-white rounded-2xl shadow-lg p-6">
+  <!-- Full Name -->
+  <div class="flex justify-between items-center py-3">
+    <span>Current Password</span>
+    <span>&gt;</span>
+  </div>
+   </section>
+  </main>
+
 </body>
-</html> 
-
+</html>
