@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Payvo - ingreso y egreso</title>
+</head>
+
+<body>
+
+    <header class="w-full bg-white py-2 shadow-md">
+
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6">
+
+            <div class="flex items-center space-x-2">
+                <img src="../Pantalla de inicio/img/LogoAzul.png" alt="" class="h-[49px] w-auto">
+            </div>
+
+            <nav class="hidden md:flex space-x-6 text-black ml-20">
+                <a href="#" class="hover:text-green-500">Income</a>
+                <a href="#" class="hover:text-green-500">Expenses</a>
+                <a href="#" class="hover:text-green-500">Savings Plan</a>
+                <a href="#" class="hover:text-green-500">Emergency Fund</a>
+            </nav>
+
+            <div class="flex items-center space-x-6">
+                <div class="w-6 h-6">
+                    <img src="../Pantalla de inicio/img/notifications.png" alt="">
+                </div>
+                <div class="w-6 h-6">
+                    <img src="../Pantalla de inicio/img/settings.png" alt="">
+                </div>
+                <div class="w-6 h-6">
+                    <img src="../Pantalla de inicio/img/perfil.png" alt="">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    <div class="flex flex-col">
+
+        <!--Parte de arriba-->
+        <div class="flex mt-6">
+            <!--Imagen-->
+            <div>
+                <img src="imagenes/lupa.png" alt="" width="300px" class="ml-20">
+            </div>
+
+            <!--Texto-->
+            <div class="ml-10 mt-12">
+                <div class="flex text-3xl font-semibold mb-4">
+                    <div class="mr-2"><h1>Personal</h1></div>
+                    <div class="mr-2 text-[#04ADE0]"><h1>Finance</h1></div>
+                    <div><h1>Management</h1></div>
+                </div>
+
+                <div class="font-normal">
+                    <h2>Review your finances, track every income and expense, and keep your money organized </h2>
+                    <h2>effortlessly</h2>
+                </div>
+            </div>
+        </div>
+
+        <!------------------------------------------------------------------------------------------->
+
+
+        <!--Parte de abajo-->
+        <div class=" p-6">
+
+            <!-- Contenedor -->
+            <div class="relative flex rounded-full bg-gray-200 p-1 shadow-inner ml-20 mr-20">
+                <!-- Coso deslizante -->
+                <div id="slider"
+                    class="absolute top-1 bottom-1 left-1 w-1/2 rounded-full bg-gray-400 shadow transition-all duration-300">
+                </div>
+
+                <!-- Botones -->
+                <button id="btnIncomes"
+                    class="relative z-10 flex-1 py-2 text-center text-sm font-semibold text-gray-800 transition-colors duration-300">
+                    All of incomes
+                </button>
+                <button id="btnExpenses"
+                    class="relative z-10 flex-1 py-2 text-center text-sm font-semibold text-gray-800 transition-colors duration-300">
+                    All of expenses
+                </button>
+            </div>
+
+            <!-- Secciones -->
+
+            <!--Primera caja-->
+            <div class="flex mt-10">
+                <div id="seccion1" class="mt-6 rounded-2xl border border-gray-200 bg-white p-5 ml-20 mr-20 shadow-xl">
+                    <div class="flex justify-between mb-3">
+                        <div class="text-sm font-semibold mr-10">
+                            <h1>Date</h1>
+                            <li class="text-[#454545] mt-2">02/06/2026</li>
+                        </div>
+
+                        <div>
+                            <button class="py-2 px-3 bg-blue-950 text-white font-semibold rounded-lg text-sm ml-10">Add +</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="text-sm font-semibold">
+                            <h1>Description</h1>
+                            <div class="flex mt-2 ">
+                                <li class="text-[#454545]">Monthly Salary - </li>
+                                <h2 class="text-[#04ADE0]">&nbsp;ABC Corporation</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Category</h1>
+                        <li class="text-[#454545] mt-2">Salary - Job</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Amount</h1>
+                        <li class="text-[#454545] mt-2">$3,500</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Notes</h1>
+                        <li class="text-[#454545] mt-2">Includes performance bonus</li>
+                    </div>
+                </div>   
+
+                <!--Segunda caja-->
+                <div id="seccion1a" class="mt-6 rounded-2xl border border-gray-200 bg-white mx-5 p-5 shadow-xl">
+                    <div class="flex justify-between mb-3">
+                        <div class="text-sm font-semibold mr-10">
+                            <h1>Date</h1>
+                            <li class="text-[#454545] mt-2">12/08/2026</li>
+                        </div>
+
+                        <div>
+                            <button class="py-2 px-3 bg-blue-950 text-white font-semibold rounded-lg text-sm ml-10">Add +</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="text-sm font-semibold">
+                            <h1>Description</h1>
+                            <div class="flex mt-2 ">
+                                <li class="text-[#454545]">Rent Payment - </li>
+                                <h2 class="text-[#04ADE0]">&nbsp;Apartament Lease</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Category</h1>
+                        <li class="text-[#454545] mt-2">Passive Income - Rent</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Amount</h1>
+                        <li class="text-[#454545] mt-2">$500</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Notes</h1>
+                        <li class="text-[#454545] mt-2">Tenant paid 2 days early</li>
+                    </div>
+                </div>
+
+                <!--Tercera caja-->
+                <div id="seccion1b" class="mt-6 rounded-2xl border border-gray-200 bg-white ml-20 mr-20 p-5 shadow-xl">
+                    <div class="flex justify-between mb-3">
+                        <div class="text-sm font-semibold mr-10">
+                            <h1>Date</h1>
+                            <li class="text-[#454545] mt-2">02/06/2026</li>
+                        </div>
+
+                        <div>
+                            <button class="py-2 px-3 bg-blue-950 text-white font-semibold rounded-lg text-sm ml-10">Add +</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="text-sm font-semibold">
+                            <h1>Description</h1>
+                            <div class="flex mt-2 ">
+                                <li class="text-[#454545]">Bonus - </li>
+                                <h2 class="text-[#04ADE0]">&nbsp;Tech Solutions S.A.</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Category</h1>
+                        <li class="text-[#454545] mt-2">Salary - Bonus</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Amount</h1>
+                        <li class="text-[#454545] mt-2">$300</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Notes</h1>
+                        <li class="text-[#454545] mt-2">Performance bonus for july</li>
+                    </div>
+                </div>
+            </div>
+        
+
+        <!--------------------------Seccion 2 --------------------------------------------->
+
+            <!--Primera caja-->
+            <div class="flex mt-">
+                <div id="seccion2" class="mt-6 hidden rounded-2xl border border-gray-200 bg-white p-5 ml-20 mr-20 shadow-xl">
+                    <div class="flex justify-between mb-3">
+                        <div class="text-sm font-semibold mr-10">
+                            <h1>Date</h1>
+                            <li class="text-[#454545] mt-2">18/08/2026</li>
+                        </div>
+
+                        <div>
+                            <button class="py-2 px-3 bg-blue-950 text-white font-semibold rounded-lg text-sm ml-10">Add +</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="text-sm font-semibold">
+                            <h1>Description</h1>
+                            <div class="flex mt-2 ">
+                                <li class="text-[#454545]">Sale - </li>
+                                <h2 class="text-[#04ADE0]">&nbsp;Old Laptop on eBay</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Category</h1>
+                        <li class="text-[#454545] mt-2">Extra Income - Sales</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Amount</h1>
+                        <li class="text-[#454545] mt-2">$200</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Notes</h1>
+                        <li class="text-[#454545] mt-2">Buyer paid shipping</li>
+                    </div>
+                </div>   
+
+                <!--Segunda caja-->
+                <div id="seccion2a" class="mt-6 hidden rounded-2xl border border-gray-200 bg-white mx-5 p-5 shadow-xl">
+                    <div class="flex justify-between mb-3">
+                        <div class="text-sm font-semibold mr-10">
+                            <h1>Date</h1>
+                            <li class="text-[#454545] mt-2">19/08/2026</li>
+                        </div>
+
+                        <div>
+                            <button class="py-2 px-3 bg-blue-950 text-white font-semibold rounded-lg text-sm ml-10">Add +</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="text-sm font-semibold">
+                            <h1>Description</h1>
+                            <div class="flex mt-2 ">
+                                <li class="text-[#454545]">Gasoline - </li>
+                                <h2 class="text-[#04ADE0]">&nbsp;PetroFuel Station</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Category</h1>
+                        <li class="text-[#454545] mt-2">Transport - Fuel</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Amount</h1>
+                        <li class="text-[#454545] mt-2">$45</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Notes</h1>
+                        <li class="text-[#454545] mt-2">Full tank for the week</li>
+                    </div>
+                </div>
+
+                <!--Tercera caja-->
+                <div id="seccion2b" class="mt-6 hidden rounded-2xl border border-gray-200 bg-white ml-20 mr-20 p-5 shadow-xl">
+                    <div class="flex justify-between mb-3">
+                        <div class="text-sm font-semibold mr-10">
+                            <h1>Date</h1>
+                            <li class="text-[#454545] mt-2">02/06/2026</li>
+                        </div>
+
+                        <div>
+                            <button class="py-2 px-3 bg-blue-950 text-white font-semibold rounded-lg text-sm ml-10">Add +</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="text-sm font-semibold">
+                            <h1>Description</h1>
+                            <div class="flex mt-2 ">
+                                <li class="text-[#454545]">Dinner - </li>
+                                <h2 class="text-[#04ADE0]">&nbsp;Italiano Ristorante</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Category</h1>
+                        <li class="text-[#454545] mt-2">Leisure - Dining Out</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Amount</h1>
+                        <li class="text-[#454545] mt-2">$60</li>
+                    </div>
+
+                    <div class="text-sm font-semibold mb-3">
+                        <h1>Notes</h1>
+                        <li class="text-[#454545] mt-2">Family dinner, included service tip</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const btnIncomes = document.getElementById('btnIncomes');
+            const btnExpenses = document.getElementById('btnExpenses');
+            const slider = document.getElementById('slider');
+            const s1 = document.getElementById('seccion1');
+            const s1a = document.getElementById('seccion1a');
+            const s1b = document.getElementById('seccion1b');
+            const s2 = document.getElementById('seccion2');
+            const s2a = document.getElementById('seccion2a');
+            const s2b = document.getElementById('seccion2b');
+
+            btnIncomes.addEventListener('click', () => {
+                slider.style.left = '0.25rem'; 
+                s1.classList.remove('hidden');
+                s1a.classList.remove('hidden');
+                s1b.classList.remove('hidden');
+                s2.classList.add('hidden');
+                s2a.classList.add('hidden');
+                s2b.classList.add('hidden');
+            });
+
+            btnExpenses.addEventListener('click', () => {
+                slider.style.left = '50%'; 
+                s2.classList.remove('hidden');
+                s2a.classList.remove('hidden');
+                s2b.classList.remove('hidden');
+                s1.classList.add('hidden');
+                s1a.classList.add('hidden');
+                s1b.classList.add('hidden');
+            });
+        </script>
+    </div>
+</body>
+</html>

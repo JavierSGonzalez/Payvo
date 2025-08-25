@@ -1,0 +1,9 @@
+body{
+    background-image: url(../imagenes/Hypercolor\ Gradient.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+li::marker {
+    color: #232E51;
+  }
