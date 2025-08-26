@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="indexInfoUno.css">
     <title>Payvo</title>
 </head>
 <body>
     <div class="flex">
         <!--Imagen que ocupa la mitad de la pantalla-->
-        <div class="mt-13 ">
+        <div class="mt-8 ">
             <img src="imagenes/imagen.png" alt="" width="609px">
         </div>
 
@@ -42,25 +43,26 @@
             </div>
 
             <div class="flex mt-5">
-                <button class="px-19 text-stone-500 font-medium py-1 border border-stone-300 rounded-lg mr-10">Saving money</button>
-                <button class="px-19 text-stone-500 font-medium py-1 border border-stone-300 rounded-lg">Spending less</button>
+                <button id="btn3" class="px-19 text-stone-500 font-medium py-1 border border-stone-300 rounded-lg mr-10 " onclick="seleccionButton3(this)">Saving money</button>
+                <button id="btn4" class="px-19 text-stone-500 hover:bg-stone font-medium py-1 border border-stone-300 rounded-lg " onclick="seleccionButton4(this)">Spending less</button>
             </div>
 
             <div class="flex mt-5">
-                <button class="px-12 text-stone-500 font-medium py-1 border border-stone-300 rounded-lg mr-10">Managing my income</button>
-                <button class="px-17 text-stone-500 font-medium py-1 border border-stone-300 rounded-lg">All of the above</button>
+                <button id="btn" class="px-12 text-stone-500 font-medium py-1 border border-stone-300 rounded-lg mr-10 " onclick="seleccionButton(this)">Managing my income</button>
+                <button id="btn2" class="px-17 text-stone-500 font-medium py-1 border border-stone-300 rounded-lg " onclick="seleccionButton2(this)">All of the above</button>
             </div>
 
             <div class="flex justify-center">
-                <button class="px-26 text-stone-500 font-medium py-1 border border-stone-300 rounded-lg mt-10 mr-13">Other</button>
+                <button id="btn5" class="px-26 text-stone-500 font-medium py-1 border border-stone-300 rounded-lg mt-10 mr-13 " onclick="seleccionButton5(this)">Other</button>
             </div>
 
-            <div>
-                <a href=""><button class="py-3 px-17 bg-blue-950 text-white font-medium rounded-lg mt-6 ml-108 ease-in-out hover:scale-110">Next</button></a>
+            <div class="ml- mb-10">
+                <a href=""><button class="py-3 px-17 bg-blue-950 hover:bg-blue-600 text-white font-medium rounded-lg mt-18 ml-98 ease-in-out hover:scale-110">Next</button></a>
             </div>
 
         </div>
 
     </div>
+    <script src="IndexInfoUno.js"></script>
 </body>
 </html>
