@@ -6,12 +6,12 @@
     <title>payvo - ingresos</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="mt-5">
     <h1 class="text-3xl font-bold text-gray-800 mb-2 text-center">Estimate your variable expenses</h1>
     <h3 class="text-center">Optional, but it helps us personalize your experience.</h3>
  
     <div>
-        <h2 class="text-center">Predefined Categories:</h2>
+        <h2 class="text-center py-5" style="font-size: 20px;"><strong>Predefined Categories:</strong></h2>
     </div>
  
     <div class="flex-container">
@@ -50,11 +50,24 @@
         <label for="Other" class="block text-sm font-medium text-gray-700">Other</label>
         <input type="text" id="Other" name="Other" class="mt-1 block px-9 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
     </div>
- 
+
+    <div>
+        <button class="flex items-center text-indigo-900 font-medium px-4 py-2 rounded-lg">
+            <span class="mr-2 text-xl">+</span>
+            <span>add another fixed expense</span>
+        </button>
+
+    </div>
 </form>
     </div>
+
+    <div class="flex justify-end pr-8 mb-4">
+        <button class="bg-[#232E51] text-white px-6 py-2 rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+        Next
+        </button>
+    </div>
  
-    <style>
+<style>
 .flex-container {
     display: flex;
     justify-content: center;
