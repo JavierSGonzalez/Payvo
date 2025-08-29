@@ -1,0 +1,10 @@
+.infosebody body{
+    position: fixed;
+    width: 1276px;
+    height: 974px;
+}
+
+.monicon{
+    position: relative;
+    left: 440px;
+}
