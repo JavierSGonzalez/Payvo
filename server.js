@@ -13,10 +13,10 @@ app.use(express.json());
 
 
 app.post("/submit", async (req, res) => {
-    console.log("datos recibidos en backend", req.body);
+    console.log("datos recibidos en baquen", req.body);
 
     try{
-        const { name, years, seleccionados } = req.body;
+        const { name, years, seleccionados, } = req.body;
 
         const user = await prisma.user.create({
             data: {
@@ -40,7 +40,7 @@ app.post("/submit", async (req, res) => {
         console.log("Error al guardar en prisma", err)
         res.status(500).json({ok: false, error: err.message});
     }
-    
+
 });
 
 app.listen(3000, ()=>{
