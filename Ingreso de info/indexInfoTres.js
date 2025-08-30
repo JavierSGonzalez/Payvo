@@ -7,7 +7,7 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
         name : document.getElementById("name").value,
         amount : document.getElementById("amount").value,
         frequency : document.getElementById("frequency").value,
-        paymentday : document.getElementById("Payment-date").value
+        billingday : document.getElementById("Billing-date").value
     }
 
 
@@ -23,11 +23,10 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
     console.log("Respuesta de servidor", respuesta);
 
     if (respuesta.ok){
-        window.location.href="IngresoInfoTres.html"
+        window.location.href=""
     }else{
         alert("error al agregar ingreso" + respuesta.error)
     }
-    
     }catch(err){
         console.log(err)
         alert("error al conectar con los servidores")

@@ -17,6 +17,7 @@ model User {
   years Int?
   seleccion Seleccion?
   incomes Income[]
+  expense Expense[]
 }
 
 model Seleccion {
@@ -37,6 +38,18 @@ model Income {
   id Int @id @default(autoincrement())
   name String
   amount String
+  frequency String
+  paymentday String
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Expense {
+  id Int @id @default(autoincrement())
+  name String
+  amount String
+  frequency String
+  billingday String
   userId Int
   user User @relation(fields: [userId], references: [id])
 }
