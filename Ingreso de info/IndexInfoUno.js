@@ -76,17 +76,24 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
         seleccionados
     }
 
-    let res = await fetch ("http://localhost:3000/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify(datos)
-    });
+     try {
+        let res = await fetch("http://localhost:3000/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(datos)
+        });
 
-    let respuesta = await res.json();
-    console.log("Respuesta de servidos", respuesta);
+        let respuesta = await res.json();
+        console.log("Respuesta del servidor", respuesta);
 
-    if (respuesta.ok){
-
-        window.location.href="IngresoInfoDos.html"
+        if (respuesta.ok) {
+            localStorage.setItem("userId", respuesta.user.id);
+            window.location.href = "IngresoInfoDos.html";
+        } else {
+            alert("Error al guardar usuario: " + respuesta.error);
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Error al conectar con el servidor");
     }
-})
+});

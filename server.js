@@ -43,6 +43,28 @@ app.post("/submit", async (req, res) => {
 
 });
 
+app.patch("/submit/:id", async (req, res) => {
+  
+  try{ 
+    const { name, amount } = req.body;
+
+  const updatedUser = await prisma.user.update({
+    where: { id: Number(req.params.id) }, 
+    data: {
+      incomes: {
+        create: { name, amount }    
+      }
+    },
+    include: { incomes: true }
+  });
+  res.json({ ok: true, user: updatedUser });
+  console.log(updatedUser);
+  }catch(err){
+    console.log("error al mandar ingresos", err)
+  }
+});
+
+
 app.listen(3000, ()=>{
     console.log("Servidor corriendo en http://localhost:3000");
 });

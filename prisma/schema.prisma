@@ -16,7 +16,7 @@ model User {
   name String
   years Int?
   seleccion Seleccion?
-  incomes Incomes[]
+  incomes Income[]
 }
 
 model Seleccion {
@@ -33,7 +33,7 @@ model Boton {
   seleccion Seleccion @relation(fields: [seleccionId], references: [id])
 }
 
-model Incomes {
+model Income {
   id Int @id @default(autoincrement())
   name String
   amount String
