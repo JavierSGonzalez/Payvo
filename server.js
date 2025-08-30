@@ -43,7 +43,7 @@ app.post("/submit", async (req, res) => {
 
 });
 
-app.patch("/submit/:id", async (req, res) => {
+app.patch("/submit/info2/:id", async (req, res) => {
   
   try{ 
     const { name, amount, frequency, paymentday,  } = req.body;
@@ -61,6 +61,27 @@ app.patch("/submit/:id", async (req, res) => {
   console.log(updatedUser);
   }catch(err){
     console.log("error al mandar ingresos", err)
+  }
+});
+
+app.patch("/submit/info3/:id", async (req, res) => {
+  
+  try{ 
+    const { name, amount, frequency, billingday,  } = req.body;
+
+  const updatedUser = await prisma.user.update({
+    where: { id: Number(req.params.id) }, 
+    data: {
+      expense: {
+        create: { name, amount, frequency, billingday } 
+      }
+    },
+    include: { expense: true }
+  });
+  res.json({ ok: true, user: updatedUser });
+  console.log(updatedUser);
+  }catch(err){
+    console.log("error al mandar egresos", err)
   }
 });
 

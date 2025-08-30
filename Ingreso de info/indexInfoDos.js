@@ -12,7 +12,7 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
 
 
     try{ 
-    let res = await fetch (`http://localhost:3000/submit/${userId}`, {
+    let res = await fetch (`http://localhost:3000/submit/info2/${userId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(datos)
