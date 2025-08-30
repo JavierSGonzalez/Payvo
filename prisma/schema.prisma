@@ -18,6 +18,7 @@ model User {
   seleccion Seleccion?
   incomes Income[]
   expense Expense[]
+  savingplan Savingplan[]
 }
 
 model Seleccion {
@@ -54,3 +55,27 @@ model Expense {
   user User @relation(fields: [userId], references: [id])
 }
 
+model Savingplan {
+  id Int @id @default(autoincrement())
+  goal String
+  frequency String
+  selecciondos Selecciondos?
+  total String
+  userId Int 
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Selecciondos {
+  id Int @id @default(autoincrement())
+  botondos Botondos[]
+  savingplanId Int @unique
+  savingplan Savingplan @relation(fields: [savingplanId], references: [id])
+
+}
+
+model Botondos {
+  id Int @id @default(autoincrement())
+  text String
+  selecciondosId Int
+  selecciondos Selecciondos @relation(fields: [selecciondosId], references: [id])
+}
