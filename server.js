@@ -85,6 +85,34 @@ app.patch("/submit/info3/:id", async (req, res) => {
   }
 });
 
+app.patch("/submit/info6/:id", async (req, res) => {
+  
+  try{
+        const { goal, frequency, seleccionados, total } = req.body;
+
+        const uptadedUsertwo = await prisma.user.update({
+          where: { id: Number(req.params.id) },
+            data: {
+                savingplan:{
+                  create:{goal, frequency, selecciondos:{
+                    create:{
+                        botondos:{
+                            create: seleccionados.map(sel => ({ text: sel }))
+                        }
+                    }
+                }, total
+              }
+                }
+            },
+            include: { savingplan: {include: { selecciondos: { include: { botondos: true}}}}}
+        });
+        res.json({ ok: true, user: uptadedUsertwo });
+    console.log(uptadedUsertwo);
+  }catch(err){
+    console.log("error al mandar saving plan", err)
+  }
+});
+
 app.listen(3000, ()=>{
     console.log("Servidor corriendo en http://localhost:3000");
 });
