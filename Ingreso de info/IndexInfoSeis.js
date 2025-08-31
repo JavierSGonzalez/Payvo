@@ -70,7 +70,17 @@ function seleccionButton6(btn6){
    
 }
 
-document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
+
+const openBtn = document.getElementById("openBtn")
+const modal2 = document.getElementById("modal2")
+const MoveBtnToMainPage = document.getElementById("MoveToMainPage")
+const MoveBtnToEmergencyPage = document.getElementById("MoveToEmergencyPage")
+
+openBtn.addEventListener("click", () => {
+      modal2.classList.remove("hidden");
+    });
+
+MoveBtnToEmergencyPage.addEventListener("click", async (e)=>{
     e.preventDefault();
 
     const seleccionados = [];
@@ -96,32 +106,82 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
             body: JSON.stringify(datos)
         });
 
-        let respuesta = await res.json();
-        console.log("Respuesta del servidor", respuesta);
+    let respuesta;
+    try {
+      respuesta = await res.json();
+    } catch {
+      respuesta = {};
+    }
 
+    console.log("Respuesta HTTP:", res.status, res.ok);
+    console.log("Respuesta JSON:", respuesta);
+
+    
+    if (!res.ok) {
+      console.error("Error en servidor:", respuesta.error || "desconocido");
+    }
+
+    
+    window.location.href = "../Emergency/index.html";
     }catch(err){
         console.log(err)
-        alert("error al conectar con los servidores",)
+        alert("Llene todos los campos porfavor",)
     }
 });
 
 
-const openBtn = document.getElementById("openBtn")
-const modal2 = document.getElementById("modal2")
-const MoveBtnToMainPage = document.getElementById("MoveToMainPage")
-const MoveBtnToEmergencyPage = document.getElementById("MoveToEmergencyPage")
 
-openBtn.addEventListener("click", () => {
-      modal2.classList.remove("hidden");
+
+    
+
+MoveBtnToMainPage.addEventListener("click", async (e)=>{
+    e.preventDefault();
+
+    const seleccionados = [];
+
+    document.querySelectorAll(".seleccionado").forEach(b => {
+        seleccionados.push(b.innerText);
     });
 
-    MoveBtnToEmergencyPage.addEventListener("click", () => {
-      modal2.classList.add("hidden");
-      window.location.href("../Emergency/index.html")
-    });
 
-    MoveBtnToMainPage.addEventListener("click", () => {
-      modal2.classList.add("hidden");
-      window.location.href("../Pantalla de inicio/index.html")
-    });
+    const userId = localStorage.getItem("userId")
+
+    const datos = {
+        goal : document.getElementById("goal").value,
+        frequency : document.getElementById("frequency").value,
+        seleccionados,
+        total : document.getElementById("total").value
+    }
+
+     try {
+        let res = await fetch(`http://localhost:3000/submit/info6/${userId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(datos)
+        });
+
+    let respuesta;
+    try {
+      respuesta = await res.json();
+    } catch {
+      respuesta = {};
+    }
+
+    console.log("Respuesta HTTP:", res.status, res.ok);
+    console.log("Respuesta JSON:", respuesta);
+
+    
+    if (!res.ok) {
+      console.error("Error en servidor:", respuesta.error || "desconocido");
+    }
+
+    
+    window.location.href = "../Pantalla de inicio/index.html";
+
+
+    }catch(err){
+        console.log(err)
+        alert("Llene todos los campos porfavor")
+    }
+});
 

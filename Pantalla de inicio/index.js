@@ -19,3 +19,27 @@ document.addEventListener("DOMContentLoaded", async ()=>{
         console.log("Error cargando datos:", err);
     }
 });
+
+    const modal = document.getElementById("myModal");
+    const modal2 = document.getElementById("myModal2");
+    const openBtn1 = document.getElementById("openModal1");
+    const openBtn2 = document.getElementById("openModal2"); 
+    const closeBtn = document.getElementById("closeModal");
+    const closeBtn2 = document.getElementById("closeModal2");
+
+      openBtn1.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+      });
+
+      openBtn2.addEventListener("click", () => {
+        modal2.classList.remove("hidden");
+      });
+   
+
+    closeBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    closeBtn2.addEventListener("click", () => {
+      modal2.classList.add("hidden");
+    });
