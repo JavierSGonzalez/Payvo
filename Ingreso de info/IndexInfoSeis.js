@@ -105,3 +105,23 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
     }
 });
 
+
+const openBtn = document.getElementById("openBtn")
+const modal2 = document.getElementById("modal2")
+const MoveBtnToMainPage = document.getElementById("MoveToMainPage")
+const MoveBtnToEmergencyPage = document.getElementById("MoveToEmergencyPage")
+
+openBtn.addEventListener("click", () => {
+      modal2.classList.remove("hidden");
+    });
+
+    MoveBtnToEmergencyPage.addEventListener("click", () => {
+      modal2.classList.add("hidden");
+      window.location.href("../Emergency/index.html")
+    });
+
+    MoveBtnToMainPage.addEventListener("click", () => {
+      modal2.classList.add("hidden");
+      window.location.href("../Pantalla de inicio/index.html")
+    });
+

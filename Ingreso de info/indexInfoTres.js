@@ -19,16 +19,28 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
     });
 
 
-    let respuesta = await res.json();
-    console.log("Respuesta de servidor", respuesta);
-
-    if (respuesta.ok){
-        window.location.href=""
-    }else{
-        alert("error al agregar ingreso" + respuesta.error)
+    let respuesta;
+    try {
+      respuesta = await res.json();
+    } catch {
+      respuesta = {};
     }
+
+    console.log("Respuesta HTTP:", res.status, res.ok);
+    console.log("Respuesta JSON:", respuesta);
+
+    
+    if (!res.ok) {
+      console.error("Error en servidor:", respuesta.error || "desconocido");
+    }
+
+    
+    window.location.href = "IngresoInfoSeis.html";
     }catch(err){
         console.log(err)
         alert("error al conectar con los servidores")
     }
 });
+
+
+
