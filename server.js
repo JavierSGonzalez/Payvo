@@ -10,6 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(express.static("public"));
 
 
 app.post("/submit", async (req, res) => {
@@ -111,6 +112,41 @@ app.patch("/submit/info6/:id", async (req, res) => {
   }catch(err){
     console.log("error al mandar saving plan", err)
   }
+});
+
+app.get("/api/activities", async (req, res)=> {
+  try{
+    const incomes = await prisma.income.findMany({
+      select: {id:true, name:true, amount:true, paymentday:true}
+    });
+    const expenses = await prisma.expense.findMany({
+      select: {id:true, name:true, amount:true, billingday:true}
+    });
+
+
+    const incomeData = incomes.map((i) => ({
+      id: i.id,
+      type: "income",
+      name: i.name,
+      amount: i.amount,
+      date: i.paymentday
+    }));
+
+    const expenseData = expenses.map((e) => ({
+      id: e.id,
+      type: "expense",
+      name: e.name,
+      amount: e.amount,
+      date: e.billingday
+    }));
+
+    const activities = [...incomeData, ...expenseData];
+
+    res.json(activities);
+  }catch(error){
+    console.log(error)
+    res.status(500).json({error: "error al tener datos"})
+  };
 });
 
 app.listen(3000, ()=>{

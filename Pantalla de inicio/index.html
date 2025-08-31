@@ -6,6 +6,27 @@
     <link rel="stylesheet" href="index.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
+
+    <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      background: #1a2347;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ffff;
+      background: #ffffff;
+      color: black;
+    }
+  </style>
+
+
 </head>
     <body class="bg-gray-200 text-white font-sans">
 
@@ -149,58 +170,18 @@
 
         <h1 class="tabtext relative text-4xl text-slate-900 md:text-5xl font-bold mb-4">Upcoming Activity</h1>
         
-        <table class="tabla text-left table-auto">
+        <table class="tabla text-left table-auto ">
             <thead>
-                <tr class="bg-blue-950 text-white">
-                <th class="p-4 rounded-tl-lg">Date</th>
-                <th class="p-4">Type</th>
-                <th class="p-4">Description</th>
-                <th class="p-4 rounded-tr-lg">Amount</th>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Amount</th>
                 </tr>
             </thead>
-            <tbody class="bg-white text-black">
-                <tr class="border-b border-gray-200">
-                <td class="p-4">August 1</td>
-                <td class="p-4">
-                    <span class="text-green-500">•</span> Expense
-                </td>
-                <td class="p-4">Internet bill</td>
-                <td class="p-4 ">-$25.00</td>
-                </tr>
-                <tr class="border-b border-gray-200">
-                <td class="p-4">August 3</td>
-                <td class="p-4">
-                    <span class="text-blue-500">•</span> Income
-                </td>
-                <td class="p-4">Freelance design payment</td>
-                <td class="p-4 ">+$320.00</td>
-                </tr>
-                <tr class="border-b border-gray-200">
-                <td class="p-4">August 9</td>
-                <td class="p-4">
-                    <span class="text-green-500">•</span> Expense
-                </td>
-                <td class="p-4">Grocery shopping</td>
-                <td class="p-4 ">-$42.80</td>
-                </tr>
-                <tr class="border-b border-gray-200">
-                <td class="p-4">August 14</td>
-                <td class="p-4">
-                    <span class="text-yellow-500">🎉</span> Event
-                </td>
-                <td class="p-4">Birthday gift</td>
-                <td class="p-4 ">-$20.00</td>
-                </tr>
-                <tr class="border-b border-gray-200">
-                <td class="p-4">August 14</td>
-                <td class="p-4">
-                    <span class="text-green-500">•</span> Expense
-                </td>
-                <td class="p-4">Gym membership</td>
-                <td class="p-4 ">-$30.00</td>
-                </tr>
+            <tbody id="activity-table">
             </tbody>
-            </table>
+        </table>
 
     <section class="blocks grid md:grid-cols-3 gap-6">
 
@@ -388,5 +369,6 @@
   </script>
 </body>
 <script src="main.py"></script>
+<script defer src="index.js"></script>
 
 </html>
