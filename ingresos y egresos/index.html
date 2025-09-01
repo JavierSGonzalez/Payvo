@@ -96,8 +96,8 @@
             <!-- Secciones -->
 
             <!--Primera caja-->
-            <div class="flex justify-between mt-10">
-                <div id="seccion1" class="mt-6 rounded-2xl border border-gray-200 bg-white p-5 ml-20 mr-20 shadow-xl">
+            <div class="flex mt-6 ml-20 mr-20 mb-6">
+                <div id="seccion1" class=" flex-shrink-0 w-[300px] h-[400px] rounded-2xl border border-gray-200 bg-white p-5 shadow-xl">
 
                     <style>
                         table {
@@ -164,14 +164,14 @@
                             </div>
 
                             <div class="flex justify-end mt-4">
-                            <button  type="submit" class="px-4 py-2 rounded-lg bg-blue-900 text-white hover:bg-blue-600">Add income</button>
+                            <button  type="submit" id="subirCambios" class="px-4 py-2 rounded-lg bg-blue-900 text-white hover:bg-blue-600">Add income</button>
                             </div>
                         </div>
                     </form>
                 </div>   
 
                 <!--Segunda caja-->
-                <div id="seccion1a" class="mt-6 rounded-2xl border border-gray-200 bg-white mx-5 p-5 shadow-xl">
+                <div id="seccion1a" class=" flex-1 h-[400px] rounded-2xl border border-gray-200 bg-white p-5 shadow-xl overflow-auto ml-7">
                      <table class="tabla text-left table-auto w-full">
                         <thead>
                             <tr>
@@ -197,7 +197,7 @@
                         defaultDate: "today"
                     })
                     </script>
-                    <script src="main.js"></script>
+                    
                 </div>
 
                 
@@ -236,7 +236,7 @@
                     <form id="añadirFormulario" class="flex flex-col h-full justify-between">
                     
                     <!-- Emergent content -->
-                    <div id="emergente" class="bg-white rounded-xl shadow-xl w-full h-full overflow-y-auto p-4 mr-10">
+                    <div id="emergente" class="  bg-white rounded-xl shadow-xl w-full h-full overflow-y-auto p-4 mr-10">
                         <div class="flex flex-col space-y-4">
 
                         <div class="flex flex-col">
@@ -252,21 +252,21 @@
                         <div class="flex flex-col">
                             <label class="font-medium text-lg">Expense type</label>
                             <select id="expenseType" class="border border-stone-300 rounded-lg py-2 px-2 mt-2">
-                            <option value="Salary">Salary</option>
-                            <option value="Bonus">Bonus</option>
-                            <option value="Unexpected">Unexpected</option>
-                            <option value="Fee">Fee</option>
+                            <option value="Food"> Food</option>
+                            <option value="Transport"> Transport</option>
+                            <option value="Debt"> Debt</option>
+                            <option value="Service payment"> Service payment</option>
+                            <option value="Cuote"> Cuote</option>
                             </select>
                         </div>
 
                         <div class="flex flex-col">
                             <label class="font-medium text-lg">Billing frequency</label>
                             <select id="frequency" class="border border-stone-300 rounded-lg py-2 px-2 mt-2">
-                            <option value="Food"> Food</option>
-                            <option value="Transport"> Transport</option>
-                            <option value="Debt"> Debt</option>
-                            <option value="Service payment"> Service payment</option>
-                            <option value="Cuote"> Cuote</option>
+                             <option value="Weekly">Weekly</option>
+                                <option value="Biweekly">Biweekly</option>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Occasional">Occasional</option>
                             </select>
                         </div>
 
@@ -287,7 +287,7 @@
                 </div>
 
                     <!-- Segunda caja: tabla -->
-                    <div id="seccion2a" class="hidden flex-1 h-[400px] rounded-2xl border border-gray-200 bg-white p-5 shadow-xl overflow-auto ml-7">
+                    <div id="seccion2a" class=" hidden flex-1 h-[400px] rounded-2xl border border-gray-200 bg-white p-5 shadow-xl overflow-auto ml-7">
                         <table class="tabla text-left table-auto w-full">
                         <thead>
                             <tr>
@@ -313,7 +313,7 @@
                         defaultDate: "today"
                     })
                     </script>
-                    <script src="main.js"></script>
+                    
 
      <!-- Chat Bot Button -->
     <a href="../chatbot/index.html"class="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity"style="background-color: rgba(62, 213, 152, 0.6);">
@@ -371,6 +371,6 @@
     © 2025 Payvo. Todos los derechos reservados.
   </div>
 </footer>
-
+<script src="main.js"></script>
 </body>
 </html>

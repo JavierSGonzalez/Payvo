@@ -1,31 +1,33 @@
 const btnIncomes = document.getElementById('btnIncomes');
-            const btnExpenses = document.getElementById('btnExpenses');
-            const slider = document.getElementById('slider');
-            const s1 = document.getElementById('seccion1');
-            const s1a = document.getElementById('seccion1a');
-            const s2 = document.getElementById('seccion2');
-            const s2a = document.getElementById('seccion2a');
+const btnExpenses = document.getElementById('btnExpenses');
+const slider = document.getElementById('slider');
+const s1 = document.getElementById('seccion1');
+const s1a = document.getElementById('seccion1a');
+const s2 = document.getElementById('seccion2');
+const s2a = document.getElementById('seccion2a');
             
 
-            btnIncomes.addEventListener('click', () => {
-                slider.style.left = '0.25rem'; 
-                s1.classList.remove('hidden');
-                s1a.classList.remove('hidden');
-                
-                s2.classList.add('hidden');
-                s2a.classList.add('hidden');
-              
-            });
+           
 
-            btnExpenses.addEventListener('click', () => {
-                slider.style.left = '50%'; 
-                s2.classList.remove('hidden');
-                s2a.classList.remove('hidden');
+btnExpenses.addEventListener('click', () => {
+slider.style.left = '50%'; 
+s2.classList.remove('hidden');
+s2a.classList.remove('hidden');
                 
-                s1.classList.add('hidden');
-                s1a.classList.add('hidden');
+s1.classList.add('hidden');
+s1a.classList.add('hidden');
                 
-            });
+});
+
+btnIncomes.addEventListener('click', () => {
+slider.style.left = '0.25rem'; 
+s1.classList.remove('hidden');
+s1a.classList.remove('hidden');
+                
+s2.classList.add('hidden');
+s2a.classList.add('hidden');
+              
+});
 
 
 document.addEventListener("DOMContentLoaded", async ()=>{
@@ -118,20 +120,21 @@ document.getElementById("añadirFormulario").addEventListener("submit", async (e
     }
 });
 
-document.getElementById("añadirFormulario2").addEventListener("submit", async (e)=>{
+const submitDos = document.getElementById("subirCambios")
+submitDos.addEventListener("click", async (e)=>{
     e.preventDefault();
 
     const userId = localStorage.getItem("userId");
 
-    const amountInput = document.getElementById("amount2").value;
-    const amountValue = amountInput !== "" ? Number(amountInput) : null;
+    const amountInput2 = document.getElementById("amount2").value;
+    const amountValue2 = amountInput2 !== "" ? Number(amountInput2) : null;
 
-    const datos = {
+    const datos2 = {
         name : document.getElementById("name2").value,
-        amount : amountValue,
+        amount : amountValue2,
         category : document.getElementById("incomeType").value,
         frequency : document.getElementById("frequency2").value,
-        billingday : document.getElementById("Payment-date").value
+        paymentday : document.getElementById("Payment-date").value
     }
 
 
@@ -139,29 +142,29 @@ document.getElementById("añadirFormulario2").addEventListener("submit", async (
     let res = await fetch (`http://localhost:3000/submit/info2/${userId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json"},
-        body: JSON.stringify(datos)
+        body: JSON.stringify(datos2)
     });
 
 
-    let respuesta;
+    let respuesta2;
     try {
-      respuesta = await res.json();
+      respuesta2 = await res.json();
     } catch {
-      respuesta = {};
+      respuesta2 = {};
     }
 
     console.log("Respuesta HTTP:", res.status, res.ok);
-    console.log("Respuesta JSON:", respuesta);
+    console.log("Respuesta JSON:", respuesta2);
 
     
     if (!res.ok) {
-      console.error("Error en servidor:", respuesta.error || "desconocido");
+      console.error("Error en servidor:", respuesta2.error || "desconocido");
     }
 
     
     }catch(err){
         console.log(err)
-        alert("error al conectar con los servidores")
+        
     }
 });
 
