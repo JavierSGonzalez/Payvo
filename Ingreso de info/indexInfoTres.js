@@ -3,9 +3,13 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
 
     const userId = localStorage.getItem("userId");
 
+    const amountInput = document.getElementById("amount").value;
+    const amountValue = amountInput !== "" ? Number(amountInput) : null;
+
     const datos = {
         name : document.getElementById("name").value,
-        amount : document.getElementById("amount").value,
+        amount : amountValue,
+        category : document.getElementById("category").value,
         frequency : document.getElementById("frequency").value,
         billingday : document.getElementById("Billing-date").value
     }

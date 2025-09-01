@@ -2,6 +2,12 @@ import express from "express";
 import { PrismaClient } from "@prisma/client"
 import cors from "cors"
 import bodyParser from "body-parser";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 const app = express();
 const prisma = new PrismaClient();
@@ -11,6 +17,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(express.static(__dirname))
 
 
 app.post("/submit", async (req, res) => {
@@ -47,13 +54,19 @@ app.post("/submit", async (req, res) => {
 app.patch("/submit/info2/:id", async (req, res) => {
   
   try{ 
-    const { name, amount, frequency, paymentday,  } = req.body;
+    const { name, amount, category, frequency, paymentday,  } = req.body;
 
   const updatedUser = await prisma.user.update({
     where: { id: Number(req.params.id) }, 
     data: {
       incomes: {
-        create: { name, amount, frequency, paymentday } 
+        create: { 
+            name,
+            amount: amount !== null ? amount : null,
+            category,
+            frequency,
+            paymentday 
+        } 
       }
     },
     include: { incomes: true }
@@ -68,13 +81,19 @@ app.patch("/submit/info2/:id", async (req, res) => {
 app.patch("/submit/info3/:id", async (req, res) => {
   
   try{ 
-    const { name, amount, frequency, billingday,  } = req.body;
+    const { name, amount, category, frequency, billingday,  } = req.body;
 
   const updatedUser = await prisma.user.update({
     where: { id: Number(req.params.id) }, 
     data: {
       expense: {
-        create: { name, amount, frequency, billingday } 
+        create: {
+           name,
+            amount: amount !== null ? amount : null, 
+            category,
+            frequency, 
+            billingday 
+        } 
       }
     },
     include: { expense: true }
@@ -95,13 +114,13 @@ app.patch("/submit/info6/:id", async (req, res) => {
           where: { id: Number(req.params.id) },
             data: {
                 savingplan:{
-                  create:{goal, frequency, selecciondos:{
+                  create:{goal: goal !== null ? goal : null, frequency, selecciondos:{
                     create:{
                         botondos:{
                             create: seleccionados.map(sel => ({ text: sel }))
                         }
                     }
-                }, total
+                }, total: total !== null ? total : null,
               }
                 }
             },
@@ -146,8 +165,66 @@ app.get("/api/activities", async (req, res)=> {
   }catch(error){
     console.log(error)
     res.status(500).json({error: "error al tener datos"})
-  };
+  }
 });
+
+app.get("/api/expenses", async (req, res)=> {
+  try{
+    
+    const expenses = await prisma.expense.findMany({
+      select: {id:true, name:true, amount:true, frequency:true, category:true, billingday:true}
+    });
+
+
+
+    const expenseData = expenses.map((e) => ({
+      id: e.id,
+      type: "expense",
+      name: e.name,
+      amount: e.amount,
+      frequency: e.frequency,
+      category: e.category,
+      date: e.billingday
+    }));
+
+
+    res.json(expenseData);
+  }catch(error){
+    console.log(error)
+    res.status(500).json({error: "error al tener datos"})
+  }
+});
+
+
+app.get("/api/incomes", async (req, res)=> {
+  try{
+    
+    const incomes = await prisma.income.findMany({
+      select: {id:true, name:true, amount:true, frequency:true, category:true, paymentday:true}
+    });
+
+
+
+    const incomeData = incomes.map((i) => ({
+      id: i.id,
+      type: "incomes",
+      name: i.name,
+      amount: i.amount,
+      frequency: i.frequency,
+      category: i.category,
+      date: i.paymentday
+    }));
+
+
+    res.json(incomeData);
+  }catch(error){
+    console.log(error)
+    res.status(500).json({error: "error al tener datos"})
+  }
+});
+
+
+
 
 app.listen(3000, ()=>{
     console.log("Servidor corriendo en http://localhost:3000");

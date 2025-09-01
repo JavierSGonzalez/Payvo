@@ -38,7 +38,8 @@ model Boton {
 model Income {
   id Int @id @default(autoincrement())
   name String
-  amount String
+  amount Decimal?
+  category String
   frequency String
   paymentday String
   userId Int
@@ -48,7 +49,8 @@ model Income {
 model Expense {
   id Int @id @default(autoincrement())
   name String
-  amount String
+  amount Decimal?
+  category String
   frequency String
   billingday String
   userId Int
@@ -57,10 +59,10 @@ model Expense {
 
 model Savingplan {
   id Int @id @default(autoincrement())
-  goal String
+  goal Decimal?
   frequency String
   selecciondos Selecciondos?
-  total String
+  total Decimal?
   userId Int 
   user User @relation(fields: [userId], references: [id])
 }

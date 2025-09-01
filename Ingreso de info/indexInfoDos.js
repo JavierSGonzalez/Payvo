@@ -1,11 +1,16 @@
+
 document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
     e.preventDefault();
 
     const userId = localStorage.getItem("userId");
 
+    const amountInput = document.getElementById("amount").value;
+    const amountValue = amountInput !== "" ? Number(amountInput) : null;
+
     const datos = {
         name : document.getElementById("name").value,
-        amount : document.getElementById("amount").value,
+        amount : amountValue,
+        category : document.getElementById("category").value,
         frequency : document.getElementById("frequency").value,
         paymentday : document.getElementById("Payment-date").value
     }
@@ -36,8 +41,10 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
 
     
     window.location.href = "IngresoInfoTres.html";
+    
     }catch(err){
         console.log(err)
-        alert("error al conectar con los servidores")
+        alert("error con el boton de movetonextpage")
     }
 })
+

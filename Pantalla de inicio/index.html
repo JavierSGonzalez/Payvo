@@ -9,7 +9,7 @@
 
     <style>
     table {
-      width: 100%;
+      width: 50%;
       border-collapse: collapse;
     }
     th {
@@ -115,24 +115,19 @@
             <div class="move">
                 <div class="bg-white rounded-xl p-6 shadow text-black" style="width: 255%">
                 <p><span class="font-semibold flex justify-start">This month Expenses</p>
-                <p class="flex justify-start"><span class="font-semibold text-[#3ED598] flex justify-start rotate-180">▲</span>5.1%</p>
                 <img src="img/Grafica2.png" alt="" class="w-40">
 
                 <div class="info2">
-                    <p class="flex justify-start"><span class="font-semibold">Top Category: </span></p>
-                    <p class="flex justify-start"><span class="font-semibold  text-[#3ED598]">•</span> Food & Dining </p>
-                    <p class="plusmoney2 justify-start"><span class="font-semibold text-slate-900">+</span></p>
-                    <p class="money2 justify-start"><span class="font-semibold text-slate-900">$320.00</span></p>
-                    <p class="flex justify-start"><span class="font-semibold">Upcoming:</span></p>
-                    <p class="flex justify-start"><span class="font-semibold text-slate-900">•</span>Spotify – Aug 2  </p>
-                    <p class="flex justify-start"><span class="font-semibold text-slate-900">•</span>Rent – Aug 5</p>
-                    <p class="flex justify-start"><span class="font-semibold text-slate-900">•</span>Gym – Aug 10 </p>
+                    <h3>This month Expenses</h3>
+                    <p id="expenses-total"></p>
 
-                    <div class="pagos">
-                        <p class="flex justify-start"><span class="font-semibold text-slate-900">$9.99</span></p>
-                        <p class="flex justify-start"><span class="font-semibold text-slate-900">$250.00</span></p>
-                        <p class=" flex justify-start"><span class="font-semibold text-slate-900">$30.00</span></p>
-                    </div>
+                    <h4>Top Category:</h4>
+                    <div id="top-category"></div>
+
+                    <h4>Upcoming:</h4>
+                    <ul id="upcoming-list"></ul>
+
+
                 </div>
 
                 <span class="font-semibold flex justify-start">Total: $1,110.00</span>
@@ -140,7 +135,7 @@
                 <p class="text-xs text-gray-500 flex justify-start">You reduced your spending by<br>$60. Well done staying under</p>
 
                 <p class="text-xs text-gray-500 flex justify-start">your limit!</p>
-                <button id="openModal2" class=" text-[#3ED598] font-semibold text-sm mt-2">
+                <button id="openModal2" class="openModal2 text-[#3ED598] font-semibold text-sm mt-2">
                 View details
                 </button>
             </div>

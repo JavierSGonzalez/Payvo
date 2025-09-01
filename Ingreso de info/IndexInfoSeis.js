@@ -112,16 +112,7 @@ MoveBtnToEmergencyPage.addEventListener("click", async (e)=>{
     } catch {
       respuesta = {};
     }
-
-    console.log("Respuesta HTTP:", res.status, res.ok);
-    console.log("Respuesta JSON:", respuesta);
-
-    
-    if (!res.ok) {
-      console.error("Error en servidor:", respuesta.error || "desconocido");
-    }
-
-    
+     
     window.location.href = "../Emergency/index.html";
     }catch(err){
         console.log(err)
@@ -146,11 +137,17 @@ MoveBtnToMainPage.addEventListener("click", async (e)=>{
 
     const userId = localStorage.getItem("userId")
 
+    const goalInput = document.getElementById("goal").value;
+    const goalValue = goalInput !== "" ? Number(goalInput) : null;
+
+    const totalInput = document.getElementById("total").value;
+    const totalValue = totalInput !== "" ? Number(totalInput) : null;
+
     const datos = {
-        goal : document.getElementById("goal").value,
+        goal : goalValue,
         frequency : document.getElementById("frequency").value,
         seleccionados,
-        total : document.getElementById("total").value
+        total : totalValue
     }
 
      try {

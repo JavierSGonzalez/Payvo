@@ -43,3 +43,4 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     closeBtn2.addEventListener("click", () => {
       modal2.classList.add("hidden");
     });
+

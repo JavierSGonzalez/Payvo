@@ -83,15 +83,23 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
             body: JSON.stringify(datos)
         });
 
-        let respuesta = await res.json();
-        console.log("Respuesta del servidor", respuesta);
+       let respuesta;
+    try {
+      respuesta = await res.json();
+    } catch {
+      respuesta = {};
+    }
 
-        if (respuesta.ok) {
-            localStorage.setItem("userId", respuesta.user.id);
-            window.location.href = "IngresoInfoDos.html";
-        } else {
-            alert("Error al guardar usuario: " + respuesta.error);
-        }
+    console.log("Respuesta HTTP:", res.status, res.ok);
+    console.log("Respuesta JSON:", respuesta);
+
+    
+    if (!res.ok) {
+      console.error("Error en servidor:", respuesta.error || "desconocido");
+    }
+
+    
+    window.location.href = "IngresoInfoDos.html";
     } catch (err) {
         console.error(err);
         alert("Error al conectar con el servidor");
