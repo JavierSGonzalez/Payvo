@@ -6,8 +6,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  
  
-mi_clave_api = "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"  # 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
- 
+mi_clave_api = "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" 
 client = Groq(
     api_key=mi_clave_api,
 )
