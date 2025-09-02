@@ -1,226 +1,99 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sign up</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
- 
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      overflow: hidden;
-    }
-  body {
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
- 
- 
-    .circulo-fondo {
-      position: absolute;
-      top: -20%;
-      left: -20%;
-      width: 70%;
-      height: 150%;
-      background-color: gray;
-      border-radius: 50%;
-      z-index: 0;
-    }
- 
-.cuadro-central {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  height: 90vh;
-  background-color: #ffffff;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
-  padding: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;       
-}
-
- .img{
-  margin: 0;
-  padding: 0;
- }
-.form-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-left: 40px;     
-  margin-top: -50px;     
-}
-.parrafo-dividido {
-  text-align: left; 
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  color: #333;
-  line-height: 1.6;
-}
-
-.linea-2 {
-  display: block;
-  text-align: left; 
-}
-
-
-/* Contenedor del formulario */
-.formulario {
-  width: 40%; 
-}
- 
-
-.campo {
-  margin-bottom: 20px;
-}
- 
-/* Estilo del label */
-label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 6px;
-  font-size: 15px;
-  color: #333;
-}
- 
-/* Estilo del input */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-textarea {
-  width: 70%;
-  padding: 10px 14px;
-  font-size: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
- 
-  box-sizing: border-box;
-}
- .cuadro-pequeno {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  background-color: #ccc;
-  margin-right: 6px;
-  vertical-align: middle;
-  border-radius: 2px; 
-}
-
-.boton-contenedor {
-  display: flex;
-  justify-content: left;
-  margin-top: 20px;
-}
-
-
-.boton-signin {
-  background-color: #00aaff; 
-  color: white;
-  border: none;
-  padding: 10px 140px;
-  font-size: 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-  align-items: right;  
-}
-
-.boton-signin:hover {
-  background-color: #0090dd; /* un poco más oscuro al pasar el mouse */
-}
-
-
-.boton-contenedor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.texto-login {
-  margin-top: 10px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.texto-login .pregunta {
-  color: #000;
-}
-
-.texto-login .respuesta {
-  color: #888;
-}
-
-.createaccount{
-  text-align:left; 
-}
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payvo - sign up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .image-container {
+            position: relative;
+        }
+        .image-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .background-image {
+            z-index: 1;
+        }
+        .overlay-image {
+            z-index: 2;
+        }
+    </style>
 </head>
-<body>
-  <div class="circulo-fondo"></div>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center font-sans">
+ 
+    <div class="bg-white rounded-2xl shadow-lg flex flex-col md:flex-row max-w-5xl w-full mx-4 my-8">
+ 
+        <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+ 
+            <img src="/sign up/img/imagen-removebg-preview (1).png" alt="" style="width: 100px; height: 150px; position: relative; top: -8px; right: -155px;">
            
-  <div class="cuadro-central">
-  <!-- Imagen alineada al borde izquierdo -->
-  <div class="img">
-    <img src="img/image.png" alt="Img" width="500" style="display: block;">
-  </div>
-
-  <!-- Contenedor del formulario -->
-  <div class="form-container" >
-<label class="create account"   for="create account">Create account</label>
-    <p class="parrafo-dividido">
-  <span class="linea-1">Create your free account and start your journey with your</span><br>
-  <span class="linea-2">AI-powered financial assistant.</span>
-</p>
-
-    <div>
-      <label for="name">Full name:</label>
-      <input type="text">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Create account</h1>
+            <p class="text-gray-500 mb-8">Create your free account and start your journey with your AI-powered financial assistant.</p>
+ 
+            <form class="space-y-4">
+                <div>
+                    <label for="full_name" class="block text-sm font-medium text-gray-700">Full name</label>
+                    <input type="text" id="full_name" name="full_name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+ 
+                <div>
+                    <label for="Email adress" class="block text-sm font-medium text-gray-700">Email adress</label>
+                    <input type="text" id="Email adress" name="Email adress" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+ 
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="text" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+ 
+                <div>
+                    <label for="Phone_number" class="block text-sm font-medium text-gray-700">Phone number</label>
+                    <input type="text" id="Phone_number" name="Phone_number" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+ 
+ 
+                <div class="flex flex-col items-center justify-center p-4">
+                   
+    <div class="flex items-start">
+            <input type="checkbox" id="terms-checkbox" name="terms" class="form-checkbox h-5 w-5 text-green-500 border-gray-300 rounded focus:ring-green-500">
+        <label for="terms-checkbox" class="ml-2 text-sm text-gray-700">
+            By registering your details, you agree with our
+            <a href="#" class="text-green-500 hover:text-green-600">Terms & Conditions</a>,
+            <a href="#" class="text-green-500 hover:text-green-600">Privacy, Cookies Policy</a>
+             and authorize the use of your financial data.
+        </label>
     </div>
-    <div>
-      <label for="email">Email address:</label>
-      <input type="text">
+ 
+    <button class="w-full py-3 mb-4 mt-6 bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-white font-semibold">
+        Sign up
+    </button>
+ 
     </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="text">
+            </form>
+ 
+            <div class="text-center text-gray-500 text-sm">
+                Already have an account? <a href="#" class="text-blue-600 hover:underline">Sign in here</a>
+            </div>
+ 
+        </div>
+ 
+        <div class="md:w-1/2 p-8 md:p-12 relative flex items-center justify-center rounded-r-2xl overflow-hidden bg-white">
+            <div class="absolute inset-0 bg-blue-100/50 rounded-r-2xl"></div>
+           
+            <div class="relative w-full h-full flex items-center justify-center">
+                <img src="/sign up/img/azul-fondo.png" alt="" class="absolute inset-0 w-full h-full object-cover rounded-r-3xl background-image top--60 left-0">
+ 
+                <img src="/sign up/img/imagen sign up.png" alt="" class="max-w-[900px] h-auto object-cover rounded-2xl overlay-image" style="width: 416px; height: 415px; z-index: 2;">
+            </div>
+        </div>
+ 
     </div>
-    <div>
-      <label for="phone">Phone number:</label>
-      <input type="text">
-    </div>
-    <p class="text-black" style="font-size: 14px;">
-      <span class="cuadro-pequeno"></span> By registering your details, you agree with our 
-      <span style="color: green;">Terms & Conditions</span>,
-      <span style="color: green;">Privacy</span>,
-      <span style="color: green;">Cookies Policy</span><br>
-      and authorize the use of your
-      <span style="color: green;">financial data</span>.
-    </p>
-  <div class="boton-contenedor">
-  <a href="../payvo sing in/main.html">
-  <button class="boton-signin">Sign in</button>
-  </a>
-  <p class="texto-login">
-    <span class="pregunta">Already have an account?</span>
-    <span class="respuesta"> Sign in here</span>
-  </p>
-</div>
-</div>
-
-
+ 
+   
+ 
 </body>
 </html>

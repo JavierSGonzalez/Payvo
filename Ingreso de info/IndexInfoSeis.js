@@ -78,6 +78,8 @@ const MoveBtnToEmergencyPage = document.getElementById("MoveToEmergencyPage")
 
 openBtn.addEventListener("click", () => {
       modal2.classList.remove("hidden");
+      MoveBtnToEmergencyPage.classList.remove("hidden");
+      MoveBtnToMainPage.classList.remove("hidden")
     });
 
 MoveBtnToEmergencyPage.addEventListener("click", async (e)=>{
@@ -92,11 +94,17 @@ MoveBtnToEmergencyPage.addEventListener("click", async (e)=>{
 
     const userId = localStorage.getItem("userId")
 
+   const goalInput = document.getElementById("goal").value;
+    const goalValue = goalInput !== "" ? Number(goalInput) : null;
+
+    const totalInput = document.getElementById("total").value;
+    const totalValue = totalInput !== "" ? Number(totalInput) : null;
+
     const datos = {
-        goal : document.getElementById("goal").value,
+        goal : goalValue,
         frequency : document.getElementById("frequency").value,
         seleccionados,
-        total : document.getElementById("total").value
+        total : totalValue
     }
 
      try {
@@ -105,15 +113,13 @@ MoveBtnToEmergencyPage.addEventListener("click", async (e)=>{
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(datos)
         });
-
-    let respuesta;
-    try {
-      respuesta = await res.json();
-    } catch {
-      respuesta = {};
-    }
-     
+        
     window.location.href = "../Emergency/index.html";
+    
+      let respuesta = await res.json();
+   
+   
+      
     }catch(err){
         console.log(err)
         alert("Llene todos los campos porfavor",)
@@ -157,23 +163,10 @@ MoveBtnToMainPage.addEventListener("click", async (e)=>{
             body: JSON.stringify(datos)
         });
 
-    let respuesta;
-    try {
-      respuesta = await res.json();
-    } catch {
-      respuesta = {};
-    }
 
-    console.log("Respuesta HTTP:", res.status, res.ok);
-    console.log("Respuesta JSON:", respuesta);
 
-    
-    if (!res.ok) {
-      console.error("Error en servidor:", respuesta.error || "desconocido");
-    }
-
-    
     window.location.href = "../Pantalla de inicio/index.html";
+     respuesta = await res.json();
 
 
     }catch(err){
@@ -182,3 +175,9 @@ MoveBtnToMainPage.addEventListener("click", async (e)=>{
     }
 });
 
+const closeBtn = document.getElementById("closeModal");
+closeBtn.addEventListener("click", () => {
+      modal2.classList.add("hidden");
+      MoveBtnToEmergencyPage.classList.add("hidden");
+      MoveBtnToMainPage.classList.add("hidden")
+    });

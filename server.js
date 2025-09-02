@@ -24,12 +24,13 @@ app.post("/submit", async (req, res) => {
     console.log("datos recibidos en baquen", req.body);
 
     try{
-        const { name, years, seleccionados, } = req.body;
+        const { name, years, email, seleccionados, } = req.body;
 
         const user = await prisma.user.create({
             data: {
                 name,
                 years: years !== null ? years : null,
+                email,
                 seleccion:{
                     create:{
                         boton:{
@@ -110,7 +111,7 @@ app.patch("/submit/info6/:id", async (req, res) => {
   try{
         const { goal, frequency, seleccionados, total } = req.body;
 
-        const uptadedUsertwo = await prisma.user.update({
+        const uptadedUserTres = await prisma.user.update({
           where: { id: Number(req.params.id) },
             data: {
                 savingplan:{
@@ -126,8 +127,8 @@ app.patch("/submit/info6/:id", async (req, res) => {
             },
             include: { savingplan: {include: { selecciondos: { include: { botondos: true}}}}}
         });
-        res.json({ ok: true, user: uptadedUsertwo });
-    console.log(uptadedUsertwo);
+        res.json({ ok: true, user: uptadedUserTres });
+    console.log(uptadedUserTres);
   }catch(err){
     console.log("error al mandar saving plan", err)
   }
@@ -223,7 +224,47 @@ app.get("/api/incomes", async (req, res)=> {
   }
 });
 
+app.get("/top-category", async (req, res) => {
+  try {
+    const result = await prisma.expense.groupBy({
+      by: ["category"],
+      _sum: {
+        amount: true,
+      },
+      orderBy: {
+        _sum: {
+          amount: "desc",
+        },
+      },
+      take: 1, 
+    });
 
+    res.json(result[0]); 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error fetching top category" });
+  }
+});
+
+app.get("/upcoming", async (req, res) => {
+  try {
+    const expenses = await prisma.expense.findMany({
+      orderBy: {
+        billingday: "asc", 
+      },
+      take: 3,
+    });
+
+    res.json(expenses);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error fetching upcoming expenses" });
+  }
+});
+
+app.listen(3000, () => {
+  console.log("✅ Server running on http://localhost:3000");
+});
 
 
 app.listen(3000, ()=>{

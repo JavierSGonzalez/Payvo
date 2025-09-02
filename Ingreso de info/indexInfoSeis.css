@@ -12,7 +12,6 @@
 .seleccionado1{
 
     
-   
     color: #ffffff;
     font-weight: 500;
 
@@ -21,14 +20,20 @@
     border: 1px solid #d6d3d1;
     border-radius: 0.5rem;
 
-    margin-right: 2.5rem;
+    
     cursor: pointer;
 
     transition: background 0.4s;
+}
+
+.seleccionado1 span{
+    color: #ffffff;
 }
 
 .seleccionado2{
 
+
+    
     color: #ffffff;
     font-weight: 500;
 
@@ -40,7 +45,9 @@
     cursor: pointer;
     transition: background 0.4s;
 }
-
+.seleccionado2 span{
+    color: #ffffff;
+}
 
 .seleccionado3{
 
@@ -56,6 +63,9 @@
 
     cursor: pointer;
     transition: background 0.4s;
+}
+.seleccionado3 span{
+    color: #ffffff;
 }
 
 .seleccionado4{
@@ -73,6 +83,9 @@
     cursor: pointer;
     transition: background 0.4s;
 }
+.seleccionado4 span{
+    color: #ffffff;
+}
 
 .seleccionado5{
 
@@ -89,6 +102,9 @@
     cursor: pointer;
     transition: background 0.4s;
 }
+.seleccionado5 span{
+    color: #ffffff;
+}
 
 .seleccionado6{
 
@@ -104,4 +120,7 @@
 
     cursor: pointer;
     transition: background 0.4s;
+}
+.seleccionado6 span{
+    color: #ffffff;
 }

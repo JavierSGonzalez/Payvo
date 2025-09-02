@@ -1,50 +1,38 @@
+document.getElementById("miFormulario").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  console.log("📩 Formulario detectado, se detuvo el refresh");
 
-document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
-    e.preventDefault();
+  const userId = localStorage.getItem("userId");
+  console.log("🔑 userId:", userId);
 
-    const userId = localStorage.getItem("userId");
+  const amountInput = document.getElementById("amount").value;
+  const amountValue = amountInput !== "" ? Number(amountInput) : null;
 
-    const amountInput = document.getElementById("amount").value;
-    const amountValue = amountInput !== "" ? Number(amountInput) : null;
+  const datos = {
+    name: document.getElementById("name").value,
+    amount: amountValue,
+    category: document.getElementById("category").value,
+    frequency: document.getElementById("frequency").value,
+    paymentday: document.getElementById("Payment-date").value,
+  };
 
-    const datos = {
-        name : document.getElementById("name").value,
-        amount : amountValue,
-        category : document.getElementById("category").value,
-        frequency : document.getElementById("frequency").value,
-        paymentday : document.getElementById("Payment-date").value
-    }
+  console.log("📦 Datos a enviar:", datos);
 
-
-    try{ 
-    let res = await fetch (`http://localhost:3000/submit/info2/${userId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify(datos)
+  try {
+    let res = await fetch(`http://localhost:3000/submit/info2/${userId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(datos),
     });
 
+    console.log("📡 Respuesta recibida:", res.status, res.ok);
+    window.location.href = "IngresoInfoTres.html"
 
-     let respuesta;
-    try {
-      respuesta = await res.json();
-    } catch {
-      respuesta = {};
-    }
-
-    console.log("Respuesta HTTP:", res.status, res.ok);
-    console.log("Respuesta JSON:", respuesta);
-
+    let respuesta = await res.json();
     
-    if (!res.ok) {
-      console.error("Error en servidor:", respuesta.error || "desconocido");
-    }
-
-    
-    window.location.href = "IngresoInfoTres.html";
-    
-    }catch(err){
-        console.log(err)
-        alert("error con el boton de movetonextpage")
-    }
-})
-
+   
+  } catch (err) {
+    console.error("🔥 Error en fetch:", err);
+    alert("⚠️ Llene todos los campos o revise el servidor");
+  }
+});

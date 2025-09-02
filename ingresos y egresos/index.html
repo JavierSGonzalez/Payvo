@@ -23,10 +23,10 @@
             </div>
 
             <nav class="hidden md:flex space-x-6 text-black ml-20">
-                <a href="../ingresos y egresos/index.html" class="hover:text-green-500">Income</a>
-                <a href="../ingresos y egresos/index.html" class="hover:text-green-500">Expenses</a>
+                 <a href="../Pantalla de inicio/index.html" class="hover:text-green-500">Home</a>
+                <a href="../ingresos y egresos/index.html" class="hover:text-green-500">Income & Expenses</a>
                 <a href="../SavingsPlan/index.html" class="hover:text-green-500">Savings Plan</a>
-                <a href="../Emergency/emegency.html" class="hover:text-green-500">Emergency Fund</a>
+                <a href="../Emergency/index.html" class="hover:text-green-500">Emergency Fund</a>
             </nav>
 
             <div class="flex items-center space-x-6">
@@ -128,17 +128,17 @@
 
                             <div class="flex flex-col">
                                 <label class="font-medium text-lg">Source name</label>
-                                <input id="name2" class="border border-stone-300 rounded-lg py-2 mt-2" type="text">
+                                <input id="name2" class="border border-stone-300 rounded-lg py-2 mt-2" type="text" required>
                             </div>
 
                             <div class="flex flex-col">
                                 <label class="font-medium text-lg">Monthly amount</label>
-                                <input id="amount2" class="border border-stone-300 rounded-lg py-2 mt-2" type="number">
+                                <input id="amount2" class="border border-stone-300 rounded-lg py-2 mt-2" type="number" required>
                             </div>
 
                             <div class="flex flex-col">
                                 <label class="font-medium text-lg">Income type</label>
-                                <select id="incomeType" class="border border-stone-300 rounded-lg py-2 px-2 mt-2">
+                                <select id="incomeType" class="border border-stone-300 rounded-lg py-2 px-2 mt-2" required>
                                 <option value="Salary">Salary</option>
                                 <option value="Bonus">Bonus</option>
                                 <option value="Unexpected">Unexpected</option>
@@ -148,7 +148,7 @@
 
                             <div class="flex flex-col">
                                 <label class="font-medium text-lg">Payment frequency</label>
-                                <select id="frequency2" class="border border-stone-300 rounded-lg py-2 px-2 mt-2">
+                                <select id="frequency2" class="border border-stone-300 rounded-lg py-2 px-2 mt-2" required>
                                 <option value="Weekly">Weekly</option>
                                 <option value="Biweekly">Biweekly</option>
                                 <option value="Monthly">Monthly</option>
@@ -158,7 +158,7 @@
 
                             <div class="flex flex-col">
                                 <label class="font-medium text-lg">Usual payment day</label>
-                                <input id="Payment-date" class="border border-stone-300 rounded-lg py-2 mt-2" type="text" placeholder="Choose a day">
+                                <input id="Payment-date" class="border border-stone-300 rounded-lg py-2 mt-2" type="text" placeholder="Choose a day" required>
                             </div>
 
                             </div>
@@ -241,17 +241,17 @@
 
                         <div class="flex flex-col">
                             <label class="font-medium text-lg">Source name</label>
-                            <input id="name" class="border border-stone-300 rounded-lg py-2 mt-2" type="text">
+                            <input id="name" class="border border-stone-300 rounded-lg py-2 mt-2" type="text" required>
                         </div>
 
                         <div class="flex flex-col">
                             <label class="font-medium text-lg">Monthly amount</label>
-                            <input id="amount" class="border border-stone-300 rounded-lg py-2 mt-2" type="number">
+                            <input id="amount" class="border border-stone-300 rounded-lg py-2 mt-2" type="number" required>
                         </div>
 
                         <div class="flex flex-col">
                             <label class="font-medium text-lg">Expense type</label>
-                            <select id="expenseType" class="border border-stone-300 rounded-lg py-2 px-2 mt-2">
+                            <select id="expenseType" class="border border-stone-300 rounded-lg py-2 px-2 mt-2" required>
                             <option value="Food"> Food</option>
                             <option value="Transport"> Transport</option>
                             <option value="Debt"> Debt</option>
@@ -262,7 +262,7 @@
 
                         <div class="flex flex-col">
                             <label class="font-medium text-lg">Billing frequency</label>
-                            <select id="frequency" class="border border-stone-300 rounded-lg py-2 px-2 mt-2">
+                            <select id="frequency" class="border border-stone-300 rounded-lg py-2 px-2 mt-2" required>
                              <option value="Weekly">Weekly</option>
                                 <option value="Biweekly">Biweekly</option>
                                 <option value="Monthly">Monthly</option>
@@ -272,7 +272,7 @@
 
                         <div class="flex flex-col">
                             <label class="font-medium text-lg">Usual billing day</label>
-                            <input id="Billing-date" class="border border-stone-300 rounded-lg py-2 mt-2" type="text" placeholder="Choose a day">
+                            <input id="Billing-date" class="border border-stone-300 rounded-lg py-2 mt-2" type="text" placeholder="Choose a day" required>
                         </div>
 
                         </div>

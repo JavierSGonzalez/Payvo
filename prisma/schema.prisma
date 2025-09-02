@@ -14,6 +14,7 @@ datasource db {
 model User {
   id Int @id @default(autoincrement())
   name String
+  email String
   years Int?
   seleccion Seleccion?
   incomes Income[]
@@ -62,7 +63,7 @@ model Savingplan {
   goal Decimal?
   frequency String
   selecciondos Selecciondos?
-  total Decimal?
+  total Int?
   userId Int 
   user User @relation(fields: [userId], references: [id])
 }

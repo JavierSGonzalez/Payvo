@@ -24,6 +24,8 @@
       background: #ffffff;
       color: black;
     }
+
+    
   </style>
 
 
@@ -40,10 +42,10 @@
             </div>
 
             <nav class="hidden md:flex space-x-6 text-black">
-                <a href="../ingresos y egresos/index.html" class="hover:text-green-500">Income</a>
-                <a href="../ingresos y egresos/index.html" class="hover:text-green-500">Expenses</a>
+                <a href="" class="hover:text-green-500">Home</a>
+                <a href="../ingresos y egresos/index.html" class="hover:text-green-500">Income & Expenses</a>
                 <a href="../SavingsPlan/index.html" class="hover:text-green-500">Savings Plan</a>
-                <a href="../Emergency/emegency.html" class="hover:text-green-500">Emergency Fund</a>
+                <a href="../Emergency/index.html" class="hover:text-green-500">Emergency Fund</a>
             </nav>
 
             <div class="flex items-center space-x-6">
@@ -92,14 +94,7 @@
                     <p class="plusmoney justify-start"><span class="font-semibold text-slate-900">+</span></p>
                     <p class="money justify-start"><span class="font-semibold text-slate-900">$320.00</span></p>
 
-                    <span class="font-semibold flex justify-start">Goal reached:</span>
-
-                    <div class="w-40 bg-gray-200 rounded-lg h-4 my-3">
-                    <div class="bg-blue-950 h-4 rounded-lg" style="width: 90%;"></div>
-                    <div class="porcentajeBar">
-                        <p class="absolute left-123% flex justify-start">98%</p>
-                    </div>
-                </div>
+                    
                 </div>
 
                 <span class="font-semibold flex justify-start">Total: $1,480.00</span>
@@ -108,38 +103,61 @@
                     Nice growth compared to</p>
 
                 <p class="text-xs text-gray-500 flex justify-start">last month!</p>
-                    <button id="openModal1" class=" text-[#3ED598] font-semibold text-sm mt-2">
-                    View details
-                    </button>
+
+                    
             </div>
-            <div class="move">
+
+
+            <div class="move ">
                 <div class="bg-white rounded-xl p-6 shadow text-black" style="width: 255%">
-                <p><span class="font-semibold flex justify-start">This month Expenses</p>
-                <img src="img/Grafica2.png" alt="" class="w-40">
+                    <div class="flex">
+                        <div class="mr-5 w-20%">
+                        <p><span class="font-semibold flex justify-start">This month Expenses</p>
+                            <p class="flex justify-start"><span class="font-semibold text-[#3ED598] flex justify-start">▲</span>5.1%</p>
+                        <img src="img/Grafica2.png" alt="" class="w-40">
 
-                <div class="info2">
-                    <h3>This month Expenses</h3>
-                    <p id="expenses-total"></p>
+                        
 
-                    <h4>Top Category:</h4>
-                    <div id="top-category"></div>
+                        <span class="font-semibold flex justify-start">Total: $1,110.00</span>
 
-                    <h4>Upcoming:</h4>
-                    <ul id="upcoming-list"></ul>
+                        <p class="text-xs text-gray-500 flex justify-start">You reduced your <br>$60. Well done staying under</p>
 
+                        <p class="text-xs text-gray-500 flex justify-start">your limit!</p>
+                        
+                        </div>
+
+
+                        <div id="lista" class=" flex flex-col ml-1 mt- w-70%">
+                 
+                        <div class="mb-2">
+                            <h4 class="font-semibold mb-2">Top Category:</h4>
+                            <div id="top-category" class="mr-1"></div>
+                        </div>
+    
+                        <div class="flex flex-col">
+                            <h4 class="font-semibold mr-5 mb-2">Upcoming:</h4>
+                            
+                            <ul id="upcoming-list" class="font- ml-9 mr-"></ul>
+                            
+                            
+                        </div>  
+                        
+                        
+ 
+                    </div>
+
+                    <div class="w-10% ml-20 mt-20">
+                            <ul id="amountLi"></ul>
+                        </div>
+                        
+                    </div>
+
+                    
 
                 </div>
-
-                <span class="font-semibold flex justify-start">Total: $1,110.00</span>
-
-                <p class="text-xs text-gray-500 flex justify-start">You reduced your spending by<br>$60. Well done staying under</p>
-
-                <p class="text-xs text-gray-500 flex justify-start">your limit!</p>
-                <button id="openModal2" class="openModal2 text-[#3ED598] font-semibold text-sm mt-2">
-                View details
-                </button>
             </div>
-            </div>
+
+        
         </section>
 
         <div class="relative noti bg-white p-8 rounded-xl shadow-lg max-w-lg mx-auto">
@@ -163,9 +181,11 @@
             </div>
         </div>
 
+
+        <div class=""> 
         <h1 class="tabtext relative text-4xl text-slate-900 md:text-5xl font-bold mb-4">Upcoming Activity</h1>
         
-        <table class="tabla text-left table-auto ">
+        <table class="tabla text-left table-auto w-[100%] ">
             <thead>
                 <tr>
                     <th>Date</th>
@@ -177,6 +197,7 @@
             <tbody id="activity-table">
             </tbody>
         </table>
+        </div>
 
     <section class="blocks grid md:grid-cols-3 gap-6">
 
@@ -243,213 +264,17 @@
 
     <!-- MODAL -->
     <div id="myModal" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-xl shadow-xl w-[95%] max-w-4xl h-[90%] overflow-y-auto p-4">
 
-            <div class="flex justify-between items-center mb-6">
-                <div class="flex items-center gap-2">
-                    <button class="border px-3 py-2 text-black rounded-lg shadow-sm">
-                    Browsing history
-                    <img src="img/down.png" alt="">
-                    </button>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow">Sync</button>
-                </div>
-                <button id="closeModal" class="text-gray-600 hover:text-gray-900 text-xl font-bold">✕</button>
-            </div>
-
-            <div class="space-y-4">
         
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                        <img src="https://img.icons8.com/color/48/grocery-bag.png" class="w-10 h-10"/>
-                        <div>
-                            <p class="font-semibold text-gray-800">Groceries • Home</p>
-                            <p class="text-gray-600 text-sm">Whole food</p>
-                            <p class="text-xs text-gray-500">Eggs • Milk • Mango • Apple • Fish • Chicken</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                    <p class="font-bold text-black text-lg">$74</p>
-                    <button class="bg-gray-100 text-black px-3 py-1 rounded-lg text-sm">Paid by card</button>
-                    <span class="text-gray-500 text-sm">08/02</span>
-                    </div>
-                </div>
-
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                        <img src="https://img.icons8.com/color/48/spotify--v1.png" class="w-10 h-10"/>
-                        <div>
-                            <p class="font-semibold text-gray-800">Entertainment • Home</p>
-                            <p class="text-gray-600 text-sm">Spotify Premium</p>
-                            <p class="text-xs text-gray-500">Monthly subscription</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <p class="font-bold text-black text-lg">$10</p>
-                        <button class="bg-gray-100 text-black px-3 py-1 rounded-lg text-sm">Paid by card</button>
-                        <span class="text-gray-500 text-sm">09/02</span>
-                    </div>
-                </div>
-
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                    <img src="https://img.icons8.com/color/48/netflix.png" class="w-10 h-10"/>
-                    <div>
-                        <p class="font-semibold text-gray-800">Entertainment • Home</p>
-                        <p class="text-gray-600 text-sm">Netflix</p>
-                        <p class="text-xs text-gray-500">Monthly subscription</p>
-                    </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <p class="font-bold text-black text-lg">$15</p>
-                        <button class="bg-gray-100 text-black px-3 py-1 rounded-lg text-sm">Paid by card</button>
-                        <span class="text-gray-500 text-sm">10/02</span>
-                    </div>
-                </div>
-
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                        <img src="https://logosdown.com/wp-content/uploads/2023/08/smart-fit-logo-0-2048x2048-1-1024x1024.png" class="w-10 h-10"/>
-                        <div>
-                            <p class="font-semibold text-gray-800">Gym • Home</p>
-                            <p class="text-gray-600 text-sm">Smart Fit</p>
-                            <p class="text-xs text-gray-500">Monthly membership</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <p class="font-bold text-black text-lg">$25</p>
-                        <button class="bg-gray-200 px-3 py-1 rounded-lg text-black text-sm">Paid by card</button>
-                        <span class="text-gray-500 text-sm">11/02</span>
-                    </div>
-                </div>
-
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                        <img src="https://img.icons8.com/color/48/pizza.png" class="w-10 h-10"/>
-                    <div>
-                        <p class="font-semibold text-gray-800">Food • Home</p>
-                        <p class="text-gray-600 text-sm">Pizza Hut</p>
-                        <p class="text-xs text-gray-500">Pizza • Sides • Drinks</p>
-                    </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <p class="font-bold text-black text-lg">$20</p>
-                        <button class="bg-gray-200 px-3 py-1 rounded-lg text-black xt-sm">Paid by card</button>
-                        <span class="text-gray-500 text-sm">12/02</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
 
      <!-- MODAL 2-->
     <div id="myModal2" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-xl shadow-xl w-[95%] max-w-4xl h-[90%] overflow-y-auto p-4">
-
-            <div class="flex justify-between items-center mb-6">
-                <div class="flex items-center gap-2">
-                    <button class="border px-3 py-2 text-black rounded-lg shadow-sm">
-                    Browsing history
-                    <img src="img/down.png" alt="">
-                    </button>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow">Sync</button>
-                </div>
-                <button id="closeModal2" class="text-gray-600 hover:text-gray-900 text-xl font-bold">✕</button>
-            </div>
-
-            <div class="space-y-4">
         
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                        <img src="https://img.icons8.com/color/48/grocery-bag.png" class="w-10 h-10"/>
-                        <div>
-                            <p class="font-semibold text-gray-800">Groceries • Home</p>
-                            <p class="text-gray-600 text-sm">Whole food</p>
-                            <p class="text-xs text-gray-500">Eggs • Milk • Mango • Apple • Fish • Chicken</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                    <p class="font-bold text-black text-lg">$74</p>
-                    <button class="bg-gray-100 text-black px-3 py-1 rounded-lg text-sm">Paid by card</button>
-                    <span class="text-gray-500 text-sm">08/02</span>
-                    </div>
-                </div>
-
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                        <img src="https://img.icons8.com/color/48/spotify--v1.png" class="w-10 h-10"/>
-                        <div>
-                            <p class="font-semibold text-gray-800">Entertainment • Home</p>
-                            <p class="text-gray-600 text-sm">Spotify Premium</p>
-                            <p class="text-xs text-gray-500">Monthly subscription</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <p class="font-bold text-black text-lg">$10</p>
-                        <button class="bg-gray-100 text-black px-3 py-1 rounded-lg text-sm">Paid by card</button>
-                        <span class="text-gray-500 text-sm">09/02</span>
-                    </div>
-                </div>
-
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                    <img src="https://img.icons8.com/color/48/netflix.png" class="w-10 h-10"/>
-                    <div>
-                        <p class="font-semibold text-gray-800">Entertainment • Home</p>
-                        <p class="text-gray-600 text-sm">Netflix</p>
-                        <p class="text-xs text-gray-500">Monthly subscription</p>
-                    </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <p class="font-bold text-black text-lg">$15</p>
-                        <button class="bg-gray-100 text-black px-3 py-1 rounded-lg text-sm">Paid by card</button>
-                        <span class="text-gray-500 text-sm">10/02</span>
-                    </div>
-                </div>
-
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                        <img src="https://logosdown.com/wp-content/uploads/2023/08/smart-fit-logo-0-2048x2048-1-1024x1024.png" class="w-10 h-10"/>
-                        <div>
-                            <p class="font-semibold text-gray-800">Gym • Home</p>
-                            <p class="text-gray-600 text-sm">Smart Fit</p>
-                            <p class="text-xs text-gray-500">Monthly membership</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <p class="font-bold text-black text-lg">$25</p>
-                        <button class="bg-gray-200 px-3 py-1 rounded-lg text-black text-sm">Paid by card</button>
-                        <span class="text-gray-500 text-sm">11/02</span>
-                    </div>
-                </div>
-
-                <div class="bg-white border rounded-lg p-4 flex justify-between items-center shadow-sm">
-                    <div class="flex gap-4 items-center">
-                        <img src="https://img.icons8.com/color/48/pizza.png" class="w-10 h-10"/>
-                    <div>
-                        <p class="font-semibold text-gray-800">Food • Home</p>
-                        <p class="text-gray-600 text-sm">Pizza Hut</p>
-                        <p class="text-xs text-gray-500">Pizza • Sides • Drinks</p>
-                    </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <p class="font-bold text-black text-lg">$20</p>
-                        <button class="bg-gray-200 px-3 py-1 rounded-lg text-black xt-sm">Paid by card</button>
-                        <span class="text-gray-500 text-sm">12/02</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
 
     <!-- SCRIPT -->
-  <script>
-    
-
-  </script>
 </body>
-<script src="main.py"></script>
 <script defer src="index.js"></script>
 
 </html>

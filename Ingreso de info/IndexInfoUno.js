@@ -73,6 +73,7 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
     const datos = {
         name : document.getElementById("nombre").value,
         years : yearsValue,
+        email : document.getElementById("email").value,
         seleccionados
     }
 

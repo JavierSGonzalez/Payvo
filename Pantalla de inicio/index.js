@@ -20,27 +20,47 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     }
 });
 
-    const modal = document.getElementById("myModal");
-    const modal2 = document.getElementById("myModal2");
-    const openBtn1 = document.getElementById("openModal1");
-    const openBtn2 = document.getElementById("openModal2"); 
-    const closeBtn = document.getElementById("closeModal");
-    const closeBtn2 = document.getElementById("closeModal2");
+async function loadTopCategory() {
+    try {
+      const res = await fetch("http://localhost:3000/top-category");
+      const data = await res.json();
 
-      openBtn1.addEventListener("click", () => {
-        modal.classList.remove("hidden");
+      document.getElementById("top-category").textContent =
+        `${data.category} - $${data._sum.amount}`;
+    } catch (error) {
+      console.error("Error cargando Top Category:", error);
+    }
+  }
+
+  async function loadUpcoming() {
+    try {
+      const res = await fetch("http://localhost:3000/upcoming");
+      const data = await res.json();
+
+      const list = document.getElementById("upcoming-list");
+      const amountLi = document.getElementById("amountLi")
+      amountLi.innerHTML = "";
+      list.innerHTML = "";
+
+      data.forEach(expense => {
+        const li = document.createElement("li");
+        li.textContent = `${expense.name} - ${expense.billingday} `;
+        const li2 = document.createElement("li")
+        li2.textContent=`$${expense.amount}`
+
+        amountLi.appendChild(li2)
+        list.appendChild(li);
       });
 
-      openBtn2.addEventListener("click", () => {
-        modal2.classList.remove("hidden");
-      });
-   
+     
 
-    closeBtn.addEventListener("click", () => {
-      modal.classList.add("hidden");
-    });
+    } catch (error) {
+      console.error("Error cargando Upcoming:", error);
+    }
+  }
 
-    closeBtn2.addEventListener("click", () => {
-      modal2.classList.add("hidden");
-    });
+  // Ejecutar al cargar la página
+  loadTopCategory();
+  loadUpcoming();
+
 
