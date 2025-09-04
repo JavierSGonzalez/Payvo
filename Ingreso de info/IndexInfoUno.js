@@ -58,7 +58,7 @@ function seleccionButton5(btn5){
    
 }
 
-document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
+document.getElementById("miFormulario").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const seleccionados = [];
@@ -71,25 +71,39 @@ document.getElementById("miFormulario").addEventListener("submit", async (e)=>{
     const yearsValue = edadInput !== "" ? Number(edadInput) : null;
 
     const datos = {
-        name : document.getElementById("nombre").value,
-        years : yearsValue,
-        email : document.getElementById("email").value,
+        name: document.getElementById("nombre").value,
+        years: yearsValue,
+        email: document.getElementById("email").value,
         seleccionados
     }
 
-     try {
+    try {
         let res = await fetch("http://localhost:3000/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(datos)
         });
 
-     console.log("📡 Respuesta recibida:", res.status, res.ok);
-     
-    window.location.href = "IngresoInfoDos.html"
+        console.log("📡 Respuesta recibida:", res);
+        
+        // ✅ WAIT FOR THE RESPONSE DATA
+        const data = await res.json();
+        console.log("📦 Data received:", data);
+        
+        if (data.ok) {
+            // ✅ NOW STORE THE USER ID FROM THE SERVER
+            localStorage.setItem("userId", data.userId);
+            console.log("✅ Stored userId:", data.userId);
+            
+            // ✅ THEN REDIRECT
+            window.location.href = "IngresoInfoDos.html";
+        } else {
+            alert("❌ Error creating user: " + data.error);
+        }
 
     } catch (err) {
-        console.error(err);
+        console.error("🔥 Error:", err);
         alert("Error al conectar con el servidor");
     }
+    // ✅ REMOVE THE finally BLOCK - only redirect on success
 });

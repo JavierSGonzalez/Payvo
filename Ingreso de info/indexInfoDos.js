@@ -5,6 +5,12 @@ document.getElementById("miFormulario").addEventListener("submit", async (e) => 
   const userId = localStorage.getItem("userId");
   console.log("🔑 userId:", userId);
 
+  if (!userId || userId === "null") {
+    alert("❌ User ID not found. Please login first.");
+    window.location.href = "index.html"; // Go back to first form
+    return;
+  }
+
   const amountInput = document.getElementById("amount").value;
   const amountValue = amountInput !== "" ? Number(amountInput) : null;
 
@@ -25,14 +31,14 @@ document.getElementById("miFormulario").addEventListener("submit", async (e) => 
       body: JSON.stringify(datos),
     });
 
-    console.log("📡 Respuesta recibida:", res.status, res.ok);
+    // ✅ FIX: Use 'res' instead of 'response'
+    const data = await res.json();
+    console.log("📡 Response from PATCH:", data);
     
-    window.location.href = "IngresoInfoTres.html"
-
-    
-   
   } catch (err) {
     console.error("🔥 Error en fetch:", err);
-    alert("⚠️ Llene todos los campos o revise el servidor");
+    alert("⚠️ Error: " + err.message);
+  } finally {
+    window.location.href = "IngresoInfoTres.html";
   }
 });

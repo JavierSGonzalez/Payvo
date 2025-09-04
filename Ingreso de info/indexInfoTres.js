@@ -20,13 +20,13 @@ document.getElementById("miFormulario").addEventListener("submit", async (e) => 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos),
     });
-    window.location.href = "IngresoInfoSeis.html";
- 
     
-      let respuesta = await res.json();
+    console.log("datos recibidos", res)
 
   } catch (err) {
     console.error("🔥 Error en fetch:", err);
     alert("Error al conectar con los servidores");
+  }finally{
+    window.location.href = "IngresoInfoSeis.html";
   }
 });

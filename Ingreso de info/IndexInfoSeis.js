@@ -77,9 +77,9 @@ const MoveBtnToMainPage = document.getElementById("MoveToMainPage")
 const MoveBtnToEmergencyPage = document.getElementById("MoveToEmergencyPage")
 
 openBtn.addEventListener("click", () => {
-      modal2.classList.remove("hidden");
-      MoveBtnToEmergencyPage.classList.remove("hidden");
-      MoveBtnToMainPage.classList.remove("hidden")
+    modal2.classList.remove("hidden");
+    MoveBtnToEmergencyPage.classList.remove("hidden");
+    MoveBtnToMainPage.classList.remove("hidden")
 });
 
 MoveBtnToEmergencyPage.addEventListener("click", async (e)=>{
@@ -115,8 +115,8 @@ MoveBtnToEmergencyPage.addEventListener("click", async (e)=>{
         });
         
    
+    console.log("Datos recibidos", res)
     
-      
     }catch(err){
         console.log(err)
         alert("Llene todos los campos porfavor",)
@@ -164,7 +164,7 @@ MoveBtnToMainPage.addEventListener("click", async (e)=>{
             
         });
 
-    console.log("📡 Respuesta recibida:", res.status, res.ok);
+    console.log("📡 Respuesta recibida:", res);
 
     }catch(err){
         console.log(err)
@@ -177,7 +177,7 @@ MoveBtnToMainPage.addEventListener("click", async (e)=>{
 
 const closeBtn = document.getElementById("closeModal");
 closeBtn.addEventListener("click", () => {
-      modal2.classList.add("hidden");
-      MoveBtnToEmergencyPage.classList.add("hidden");
-      MoveBtnToMainPage.classList.add("hidden")
+    modal2.classList.add("hidden");
+    MoveBtnToEmergencyPage.classList.add("hidden");
+    MoveBtnToMainPage.classList.add("hidden")
     });

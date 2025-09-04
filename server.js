@@ -43,7 +43,7 @@ app.post("/submit", async (req, res) => {
 
         });
         console.log("Usuario guardado", user)
-        res.json({ok: true, user});
+        res.json({ok: true, user, userId: user.id});
 
     }catch(err){
         console.log("Error al guardar en prisma", err)
@@ -53,29 +53,47 @@ app.post("/submit", async (req, res) => {
 });
 
 app.patch("/submit/info2/:id", async (req, res) => {
-  
-  try{ 
-    const { name, amount, category, frequency, paymentday,  } = req.body;
+  try { 
+    const { name, amount, category, frequency, paymentday } = req.body;
+    
+    // DEBUG: Let's see what we're getting
+    console.log("Raw req.params.id:", req.params.id);
+    console.log("Type of req.params.id:", typeof req.params.id);
+    
+    const userId = parseInt(req.params.id);
+    console.log("Parsed userId:", userId);
+    console.log("Is userId NaN?:", isNaN(userId));
+    
+    // Validation
+    if (!req.params.id) {
+      return res.status(400).json({ error: "No ID provided in URL" });
+    }
+    
+    if (isNaN(userId)) {
+      return res.status(400).json({ error: `Invalid user ID: ${req.params.id}` });
+    }
 
-  const updatedUser = await prisma.user.update({
-    where: { id: Number(req.params.id) }, 
-    data: {
-      incomes: {
-        create: { 
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        incomes: {
+          create: { 
             name,
             amount: amount !== null ? amount : null,
             category,
             frequency,
             paymentday 
-        } 
-      }
-    },
-    include: { incomes: true }
-  });
-  res.json({ ok: true, user: updatedUser });
-  console.log(updatedUser);
-  }catch(err){
-    console.log("error al mandar ingresos", err)
+          } 
+        }
+      },
+      include: { incomes: true }
+    });
+    
+    res.json({ ok: true, user: updatedUser });
+    console.log("Success! Updated user:", updatedUser);
+  } catch(err) {
+    console.log("error al mandar ingresos", err);
+    res.status(500).json({ error: "Failed to add income" });
   }
 });
 
