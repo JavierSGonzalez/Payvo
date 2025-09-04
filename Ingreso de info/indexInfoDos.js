@@ -26,9 +26,9 @@ document.getElementById("miFormulario").addEventListener("submit", async (e) => 
     });
 
     console.log("📡 Respuesta recibida:", res.status, res.ok);
+    
     window.location.href = "IngresoInfoTres.html"
 
-    let respuesta = await res.json();
     
    
   } catch (err) {

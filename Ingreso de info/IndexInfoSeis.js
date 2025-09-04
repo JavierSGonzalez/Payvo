@@ -80,7 +80,7 @@ openBtn.addEventListener("click", () => {
       modal2.classList.remove("hidden");
       MoveBtnToEmergencyPage.classList.remove("hidden");
       MoveBtnToMainPage.classList.remove("hidden")
-    });
+});
 
 MoveBtnToEmergencyPage.addEventListener("click", async (e)=>{
     e.preventDefault();
@@ -114,16 +114,16 @@ MoveBtnToEmergencyPage.addEventListener("click", async (e)=>{
             body: JSON.stringify(datos)
         });
         
-    window.location.href = "../Emergency/index.html";
+   
     
-      let respuesta = await res.json();
-   
-   
       
     }catch(err){
         console.log(err)
         alert("Llene todos los campos porfavor",)
+    }finally {
+        window.location.href = "../Pantalla de inicio/index.html";
     }
+
 });
 
 
@@ -161,18 +161,18 @@ MoveBtnToMainPage.addEventListener("click", async (e)=>{
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(datos)
+            
         });
 
-
-
-    window.location.href = "../Pantalla de inicio/index.html";
-     respuesta = await res.json();
-
+    console.log("📡 Respuesta recibida:", res.status, res.ok);
 
     }catch(err){
         console.log(err)
         alert("Llene todos los campos porfavor")
+    }finally {
+        window.location.href = "../Pantalla de inicio/index.html";
     }
+
 });
 
 const closeBtn = document.getElementById("closeModal");
