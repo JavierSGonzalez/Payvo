@@ -15,31 +15,35 @@
 <body class="font-sans bg-white m-0 p-0">
 
   
-  <header class="w-full bg-white py-4 shadow-md relative">
-    <!-- LOGO en esquina izquierda -->
-    <a href="../Pantalla de inicio/index.html">
-      <img src="../imagenes/Logo.png" alt="Logo" class="h-[55px] w-auto absolute top-0 left-0 m-2" />
-    </a>
+  <header class="w-full bg-white py-2 shadow-md">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6">
+            <div class="flex items-center space-x-2">
+                <a href="../Pantalla de inicio/index.html">
+                        <img src="../Pantalla de inicio/img/LogoAzul.png" alt="" class="h-[49px] w-auto">
+                </a>
+            </div>
 
-      <div class="absolute top-0 right-0 m-2 flex items-center space-x-4">
-        <a href="../Settings/index.html">
-          <img src="../premium/img/settings.png" alt="Settings" class="w-6 h-6" />
-        </a>
-        <a href="../Profile/profile.html">
-          <img src="../premium/img/perfil.png" alt="Perfil" class="w-6 h-6" />
-        </a>
-    </div>
+            <nav class="hidden md:flex space-x-6 text-black">
+                <a href="../Pantalla de inicio/index.html" class="hover:text-green-500">Home</a>
+                <a href="../ingresos y egresos/index.html" class="hover:text-green-500">Income & Expenses</a>
+                <a href="../SavingsPlan/index.html" class="hover:text-green-500">Savings Plan</a>
+                <a href="../Emergency/index.html" class="hover:text-green-500">Emergency Fund</a>
+            </nav>
 
-   
-    <nav class="flex justify-center space-x-6">
-      <a href="../ingresos y egresos/index.html" class="hover:text-green-500">Income</a>
-      <a href="../ingresos y egresos/index.html" class="hover:text-green-500">Expenses</a>
-      <a href="../SavingsPlan/index.html" class="hover:text-green-500">Savings Plan</a>
-      <a href="../Emergency/emegency.html" class="hover:text-green-500">Emergency Fund</a>
-      <a href="../premium/premium.html" class="hover:text-green-500">Premium</a>
-    </nav>
-    
-  </header>
+            <div class="flex items-center space-x-6">
+                <div class="w-6 h-6">
+                    <a href="../Settings/index.html">
+                        <img src="../Pantalla de inicio/img/settings.png" alt="">
+                    </a>
+                </div>
+                <div class="w-6 h-6">
+                    <a href="../Profile/profile.html">
+                        <img src="../Pantalla de inicio/img/perfil.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="flex h-screen" style="background-color: #312D2D;">
