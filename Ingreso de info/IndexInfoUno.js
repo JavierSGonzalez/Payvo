@@ -67,12 +67,11 @@ document.getElementById("miFormulario").addEventListener("submit", async (e) => 
         seleccionados.push(b.innerText);
     });
 
-    const edadInput = document.getElementById("edad").value;
-    const yearsValue = edadInput !== "" ? Number(edadInput) : null;
+    
 
     const datos = {
         name: document.getElementById("nombre").value,
-        years: yearsValue,
+        password: document.getElementById("password").value,
         email: document.getElementById("email").value,
         seleccionados
     }
@@ -96,7 +95,7 @@ document.getElementById("miFormulario").addEventListener("submit", async (e) => 
             console.log("✅ Stored userId:", data.userId);
             
             // ✅ THEN REDIRECT
-            window.location.href = "IngresoInfoDos.html";
+            
         } else {
             alert("❌ Error creating user: " + data.error);
         }
@@ -104,6 +103,8 @@ document.getElementById("miFormulario").addEventListener("submit", async (e) => 
     } catch (err) {
         console.error("🔥 Error:", err);
         alert("Error al conectar con el servidor");
+    }finally{
+        window.location.href = "IngresoInfoDos.html";
     }
     // ✅ REMOVE THE finally BLOCK - only redirect on success
 });

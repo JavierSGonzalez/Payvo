@@ -24,12 +24,12 @@ app.post("/submit", async (req, res) => {
     console.log("datos recibidos en baquen", req.body);
 
     try{
-        const { name, years, email, seleccionados, } = req.body;
+        const { name, password, email, seleccionados, } = req.body;
 
         const user = await prisma.user.create({
             data: {
                 name,
-                years: years !== null ? years : null,
+                password,
                 email,
                 seleccion:{
                     create:{
