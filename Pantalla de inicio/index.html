@@ -37,7 +37,7 @@
 
 
 </head>
-    <body class="bg-gray-200 text-white font-sans">
+    <body class="bg-gray-200 text-white font-sans min-h-screen flex flex-col">
 
     <!-- HEADER -->
     <header class="w-full bg-white py-2 shadow-md">
@@ -69,6 +69,8 @@
             </div>
         </div>
     </header>
+
+    <main class="flex-grow"></main>
 
     <section class="text-center py-16 px-6">
         <div class="flex justify-center items-center space-x-2 mb-4">
@@ -264,24 +266,20 @@
         </div>
     </section>
     </section>
-    <!-- Chat Bot Button -->
-    <a href="../chatbot/index.html"class="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity"style="background-color: rgba(62, 213, 152, 0.6);">
+        <!-- Chat Bot Button -->
+    <a href="../chatbot/index.html" 
+       class="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity"
+       style="background-color: rgba(62, 213, 152, 0.6);">
         <img src="img/bot.png" alt="Chat Bot" class="w-8 h-8">
     </a>
 
     <!-- MODAL -->
-    <div id="myModal" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div id="myModal" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center z-50"></div>
 
-        
-    </div>
-
-     <!-- MODAL 2-->
-    <div id="myModal2" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center z-50">
-        
-    </div>
+    <!-- MODAL 2-->
+    <div id="myModal2" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center z-50"></div>
 
     <!-- SCRIPT -->
+    <script defer src="index.js"></script>
 </body>
-<script defer src="index.js"></script>
-
 </html>
