@@ -31,6 +31,7 @@ document.getElementById("miFormulario").addEventListener("submit", async (e) => 
       body: JSON.stringify(datos),
     });
 
+
     // ✅ FIX: Use 'res' instead of 'response'
     const data = await res.json();
     console.log("📡 Response from PATCH:", data);
