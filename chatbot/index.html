@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
     <link rel="icon" type="image/x-icon" href="../Pantalla de inicio/img/LogoAzul.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../Pantalla de inicio/img/LogoAzul.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../Pantalla de inicio/img/LogoAzul.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../Pantalla de inicio/img/LogoAzul.png">
-  <link rel="icon" type="image/svg+xml" href="../Pantalla de inicio/img/LogoAzul.png">
-  <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Pantalla de inicio/img/LogoAzul.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Pantalla de inicio/img/LogoAzul.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../Pantalla de inicio/img/LogoAzul.png">
+    <link rel="icon" type="image/svg+xml" href="../Pantalla de inicio/img/LogoAzul.png">
+    <meta name="theme-color" content="#ffffff">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Payvo</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <style>
         .assistant-message {
             background-color: white;
@@ -21,9 +23,9 @@
             margin-bottom: 0.75rem;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
             color: #232E51;
-            margin-left: 5rem; 
+            margin-left: 5rem;
         }
- 
+
         .user-message {
             background-color: #D7E0FF;
             padding: 1.5rem;
@@ -34,7 +36,7 @@
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
             color: #232E51;
         }
- 
+
         .chat-container {
             display: flex;
             flex-direction: column;
@@ -99,7 +101,7 @@
 
             <div id="chat-container" class="chat-container">
                 <div id="initial-view" class="flex-grow flex flex-col justify-center items-center">
-                    <h1 class="text-5xl font-bold text-[#232E51] opacity-80">Hello, I am Payvo</h1>
+                    <h1 class="text-5xl font-bold text-[#232E51] opacity-80">Hello, I am Paybot</h1>
                     <p class="text-xl text-gray-500 mt-2">How can I help you today?</p>
                 </div>
             </div>
@@ -118,206 +120,194 @@
     </div>
     
     <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const sendButton = document.getElementById('send-button');
-    const userInput = document.getElementById('user-input');
-    const chatContainer = document.getElementById('chat-container');
-    const initialView = document.getElementById('initial-view');
-    const chatHistoryContainer = document.getElementById('chat-history-container');
-    const newChatButton = document.getElementById('new-chat-button');
-
-    let chatHistory = [];
-    let activeChatId = null;
-
-    // --- FUNCIONES PRINCIPALES ---
-
-    function initializeApp() {
-        const savedChats = localStorage.getItem('chatHistory');
-        if (savedChats) {
-            chatHistory = JSON.parse(savedChats);
-        }
-        activeChatId = localStorage.getItem('activeChatId');
+        document.addEventListener('DOMContentLoaded', () => {
+            const sendButton = document.getElementById('send-button');
+            const userInput = document.getElementById('user-input');
+            const chatContainer = document.getElementById('chat-container');
+            const initialView = document.getElementById('initial-view');
+            const chatHistoryContainer = document.getElementById('chat-history-container');
+            const newChatButton = document.getElementById('new-chat-button');
         
-        renderSidebar();
-        loadChat(activeChatId);
-    }
-
-    /**
-     * Dibuja los bloques de chat y sus botones de borrado en la barra lateral.
-     */
-    function renderSidebar() {
-        chatHistoryContainer.innerHTML = ''; 
-        chatHistory.forEach(chat => {
-            const chatBlock = document.createElement('div');
-            // MODIFICACIÓN: Añadimos clases de flexbox para alinear el título y el botón
-            chatBlock.className = 'text-sm text-[#232E51] pl-3 pr-2 py-2 rounded-lg cursor-pointer transition duration-200 flex justify-between items-center';
-            
-            // Contenedor para el título del chat
-            const titleSpan = document.createElement('span');
-            titleSpan.textContent = chat.title;
-            // Estilos para evitar que un título largo rompa el diseño
-            titleSpan.style.whiteSpace = 'nowrap';
-            titleSpan.style.overflow = 'hidden';
-            titleSpan.style.textOverflow = 'ellipsis';
-            
-            // --- NUEVO: Botón de borrado ---
-            const deleteBtn = document.createElement('button');
-            deleteBtn.innerHTML = '🗑️'; // Emoji de papelera
-            deleteBtn.className = 'p-1 rounded-md hover:bg-red-200 transition-colors opacity-60 hover:opacity-100';
-            
-            deleteBtn.addEventListener('click', (event) => {
-                event.stopPropagation(); // Evita que se dispare el evento click del chatBlock
-                
-                // Pedimos confirmación antes de borrar
-                if (confirm(`¿Estás seguro de que quieres borrar el chat "${chat.title}"?`)) {
-                    deleteChat(chat.id);
+            let chatHistory = [];
+            let activeChatId = null;
+        
+            function initializeApp() {
+                const savedChats = localStorage.getItem('chatHistory');
+                if (savedChats) {
+                    chatHistory = JSON.parse(savedChats);
                 }
-            });
-            // --- FIN DEL NUEVO CÓDIGO ---
-
-            if (chat.id === activeChatId) {
-                chatBlock.classList.add('bg-[#DCDCDC]', 'shadow-md');
-            } else {
-                chatBlock.classList.add('hover:bg-[#E9F2F5]');
+                activeChatId = localStorage.getItem('activeChatId');
+                
+                renderSidebar();
+                loadChat(activeChatId);
             }
-
-            chatBlock.setAttribute('data-chat-id', chat.id);
-            
-            // Al hacer clic en el bloque (no en el botón), se carga el chat
-            chatBlock.addEventListener('click', () => {
-                loadChat(chat.id);
-            });
-
-            // Añadimos el título y el botón al bloque
-            chatBlock.appendChild(titleSpan);
-            chatBlock.appendChild(deleteBtn);
-
-            chatHistoryContainer.appendChild(chatBlock);
-        });
-    }
-    
-    // --- NUEVA FUNCIÓN: deleteChat ---
-    /**
-     * Borra un chat del historial y actualiza la UI.
-     * @param {string} chatIdToDelete - El ID del chat a borrar.
-     */
-    function deleteChat(chatIdToDelete) {
-        // Filtramos el historial para quedarnos con todos los chats excepto el que queremos borrar
-        chatHistory = chatHistory.filter(chat => chat.id !== chatIdToDelete);
         
-        // Si el chat borrado era el que estaba activo, volvemos a la pantalla de inicio
-        if (activeChatId === chatIdToDelete) {
-            loadChat(null);
-        }
-        
-        saveHistory(); // Guardamos el nuevo historial sin el chat borrado
-        renderSidebar(); // Volvemos a dibujar la barra lateral
-    }
-    // --- FIN DE LA NUEVA FUNCIÓN ---
+            function renderSidebar() {
+                chatHistoryContainer.innerHTML = ''; 
+                chatHistory.forEach(chat => {
+                    const chatBlock = document.createElement('div');
+                    chatBlock.className = 'text-sm text-[#232E51] pl-3 pr-2 py-2 rounded-lg cursor-pointer transition duration-200 flex justify-between items-center';
+                    
+                    const titleSpan = document.createElement('span');
+                    titleSpan.textContent = chat.title;
+                    titleSpan.style.whiteSpace = 'nowrap';
+                    titleSpan.style.overflow = 'hidden';
+                    titleSpan.style.textOverflow = 'ellipsis';
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.innerHTML = '🗑️';
+                    deleteBtn.className = 'p-1 rounded-md hover:bg-red-200 transition-colors opacity-60 hover:opacity-100';
+                    
+                    deleteBtn.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        
+                        if (confirm(`¿Estás seguro de que quieres borrar el chat "${chat.title}"?`)) {
+                            deleteChat(chat.id);
+                        }
+                    });
 
-    function loadChat(chatId) {
-        activeChatId = chatId ? chatId.toString() : null;
-        localStorage.setItem('activeChatId', activeChatId);
-        
-        chatContainer.innerHTML = ''; 
+                    if (chat.id === activeChatId) {
+                        chatBlock.classList.add('bg-[#DCDCDC]', 'shadow-md');
+                    } else {
+                        chatBlock.classList.add('hover:bg-[#E9F2F5]');
+                    }
 
-        if (!chatId) {
-            chatContainer.appendChild(initialView);
-            initialView.style.display = 'flex'; 
-        } else {
-            initialView.style.display = 'none'; 
-            const chat = chatHistory.find(c => c.id === chatId);
-            if (chat) {
-                chat.messages.forEach(message => {
-                    displayMessage(message.role, message.content);
+                    chatBlock.setAttribute('data-chat-id', chat.id);
+                    
+                    chatBlock.addEventListener('click', () => {
+                        loadChat(chat.id);
+                    });
+        
+                    chatBlock.appendChild(titleSpan);
+                    chatBlock.appendChild(deleteBtn);
+        
+                    chatHistoryContainer.appendChild(chatBlock);
                 });
             }
-        }
-        renderSidebar(); 
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
+            
+            function deleteChat(chatIdToDelete) {
+                chatHistory = chatHistory.filter(chat => chat.id !== chatIdToDelete);
+                
+                if (activeChatId === chatIdToDelete) {
+                    loadChat(null);
+                }
+                
+                saveHistory();
+                renderSidebar();
+            }
 
-    function displayMessage(role, content) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = role === 'user' ? 'user-message' : 'assistant-message';
-        messageDiv.textContent = content;
-        chatContainer.appendChild(messageDiv);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
+            function loadChat(chatId) {
+                activeChatId = chatId ? chatId.toString() : null;
+                localStorage.setItem('activeChatId', activeChatId);
+                
+                chatContainer.innerHTML = ''; 
 
-    function saveHistory() {
-        localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-    }
+                if (!chatId) {
+                    chatContainer.appendChild(initialView);
+                    initialView.style.display = 'flex'; 
+                } else {
+                    initialView.style.display = 'none'; 
+                    const chat = chatHistory.find(c => c.id === chatId);
+                    if (chat) {
+                        chat.messages.forEach(message => {
+                            displayMessage(message.role, message.content);
+                        });
+                    }
+                }
+                renderSidebar(); 
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
 
-    async function sendMessage() {
-        const userQuestion = userInput.value.trim();
-        if (userQuestion === "") return;
+            // FUNCIÓN MODIFICADA
+            function displayMessage(role, content) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = role === 'user' ? 'user-message' : 'assistant-message';
 
-        initialView.style.display = 'none'; 
+                if (role === 'assistant') {
+                    // Usamos marked.parse() para procesar el Markdown
+                    messageDiv.innerHTML = marked.parse(content);
+                } else {
+                    messageDiv.textContent = content;
+                }
+                
+                chatContainer.appendChild(messageDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
 
-        let currentChat;
+            function saveHistory() {
+                localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+            }
 
-        if (!activeChatId) {
-            const newChatId = Date.now().toString();
-            currentChat = {
-                id: newChatId,
-                title: userQuestion.length > 25 ? userQuestion.substring(0, 25) + '...' : userQuestion, 
-                messages: []
-            };
-            chatHistory.unshift(currentChat); 
-            activeChatId = newChatId;
-            localStorage.setItem('activeChatId', activeChatId);
-        } else {
-            currentChat = chatHistory.find(c => c.id === activeChatId);
-        }
+            async function sendMessage() {
+                const userQuestion = userInput.value.trim();
+                if (userQuestion === "") return;
 
-        currentChat.messages.push({ role: 'user', content: userQuestion });
-        displayMessage('user', userQuestion);
-        userInput.value = "";
-        
-        saveHistory();
-        renderSidebar();
+                initialView.style.display = 'none'; 
 
-        try {
-            const response = await fetch('http://127.0.0.1:5000/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ question: userQuestion }),
+                let currentChat;
+
+                if (!activeChatId) {
+                    const newChatId = Date.now().toString();
+                    currentChat = {
+                        id: newChatId,
+                        title: userQuestion.length > 25 ? userQuestion.substring(0, 25) + '...' : userQuestion, 
+                        messages: []
+                    };
+                    chatHistory.unshift(currentChat); 
+                    activeChatId = newChatId;
+                    localStorage.setItem('activeChatId', activeChatId);
+                } else {
+                    currentChat = chatHistory.find(c => c.id === activeChatId);
+                }
+
+                currentChat.messages.push({ role: 'user', content: userQuestion });
+                displayMessage('user', userQuestion);
+                userInput.value = "";
+                
+                saveHistory();
+                renderSidebar();
+
+                try {
+                    const response = await fetch('http://127.0.0.1:5000/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ question: userQuestion }),
+                    });
+
+                    const data = await response.json();
+
+                    if (data.response) {
+                        currentChat.messages.push({ role: 'assistant', content: data.response });
+                        displayMessage('assistant', data.response);
+                    } else {
+                        const errorMsg = 'Error: ' + (data.error || 'Respuesta inesperada del servidor.');
+                        currentChat.messages.push({ role: 'assistant', content: errorMsg });
+                        displayMessage('assistant', errorMsg);
+                    }
+                } catch (error) {
+                    console.error('Error de conexión:', error);
+                    const errorMsg = 'Error de conexión: No se pudo conectar al servidor.';
+                    currentChat.messages.push({ role: 'assistant', content: errorMsg });
+                    displayMessage('assistant', errorMsg);
+                }
+                
+                saveHistory(); 
+            }
+
+            sendButton.addEventListener('click', sendMessage);
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
             });
 
-            const data = await response.json();
+            newChatButton.addEventListener('click', () => {
+                loadChat(null); 
+            });
 
-            if (data.response) {
-                currentChat.messages.push({ role: 'assistant', content: data.response });
-                displayMessage('assistant', data.response);
-            } else {
-                const errorMsg = 'Error: ' + (data.error || 'Respuesta inesperada del servidor.');
-                currentChat.messages.push({ role: 'assistant', content: errorMsg });
-                displayMessage('assistant', errorMsg);
-            }
-        } catch (error) {
-            console.error('Error de conexión:', error);
-            const errorMsg = 'Error de conexión: No se pudo conectar al servidor.';
-            currentChat.messages.push({ role: 'assistant', content: errorMsg });
-            displayMessage('assistant', errorMsg);
-        }
-        
-        saveHistory(); 
-    }
+            initializeApp();
+        });
+    </script>
 
-    sendButton.addEventListener('click', sendMessage);
-    userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
-
-    newChatButton.addEventListener('click', () => {
-        loadChat(null); 
-    });
-
-    initializeApp();
-});
-</script>
 </body>
 </html>
