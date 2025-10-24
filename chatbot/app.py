@@ -7,11 +7,11 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  
  
-mi_clave_api = "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" 
+mi_clave_api = "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"
 client = Groq(
     api_key=mi_clave_api,
 )
- 
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.get_json()
