@@ -20,7 +20,7 @@ addIncome.addEventListener("click", async (e) => {
     amount: amountValue,
     category: document.getElementById("category").value,
     frequency: document.getElementById("frequency").value,
-    paymentday: document.getElementById("Payment-date").value,
+    billingday: document.getElementById("Payment-date").value,
   };
 
   console.log("📦 Datos a enviar:", datos);

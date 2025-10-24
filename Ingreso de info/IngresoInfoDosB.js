@@ -40,6 +40,8 @@ addIncome.addEventListener("click", async (e) => {
   } catch (err) {
     console.error("🔥 Error en fetch:", err);
     alert("⚠️ Error: " + err.message);
+  }finally{
+    
   }
 });
 
@@ -68,6 +70,6 @@ document.addEventListener("DOMContentLoaded", async ()=>{
 
 const moveToNextPage = document.getElementById("moveToNextPage")
 moveToNextPage.addEventListener("click", (i) => {
-  window.location.href = "IngresoInfoTres.html"
+  window.location.href = "IngresoInfoTresB.html"
 })
 

@@ -42,7 +42,7 @@ nextButton.addEventListener("click", async (e) => {
     console.error("🔥 Error en fetch:", err);
     alert("⚠️ Error: " + err.message);
   } finally {
-    window.location.href = "IngresoInfoTres.html";
+    window.location.href = "IngresoInfoDosB.html";
   }
 });
 

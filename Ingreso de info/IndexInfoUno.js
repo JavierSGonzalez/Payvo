@@ -104,7 +104,7 @@ document.getElementById("miFormulario").addEventListener("submit", async (e) => 
         console.error("🔥 Error:", err);
         alert("Error al conectar con el servidor");
     }finally{
-        window.location.href = "IngresoInfoDos.html";
+        window.location.href = "IngresoInfoDosB.html";
     }
     // ✅ REMOVE THE finally BLOCK - only redirect on success
 });
