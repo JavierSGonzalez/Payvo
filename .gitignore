@@ -18,3 +18,4 @@ pnpm-debug.log*
 
 # Archivos de sistema
 .DS_Store
+app.py
