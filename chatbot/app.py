@@ -8,7 +8,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-mi_clave_api = "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"
+mi_clave_api = "api en teams"
 client = Groq(
     api_key=mi_clave_api,
 )
