@@ -120,194 +120,208 @@
     </div>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sendButton = document.getElementById('send-button');
-            const userInput = document.getElementById('user-input');
-            const chatContainer = document.getElementById('chat-container');
-            const initialView = document.getElementById('initial-view');
-            const chatHistoryContainer = document.getElementById('chat-history-container');
-            const newChatButton = document.getElementById('new-chat-button');
+    document.addEventListener('DOMContentLoaded', () => {
+        const sendButton = document.getElementById('send-button');
+        const userInput = document.getElementById('user-input');
+        const chatContainer = document.getElementById('chat-container');
+        const initialView = document.getElementById('initial-view');
+        const chatHistoryContainer = document.getElementById('chat-history-container');
+        const newChatButton = document.getElementById('new-chat-button');
         
-            let chatHistory = [];
-            let activeChatId = null;
+        let chatHistory = [];
+        let activeChatId = null;
         
-            function initializeApp() {
-                const savedChats = localStorage.getItem('chatHistory');
-                if (savedChats) {
-                    chatHistory = JSON.parse(savedChats);
-                }
-                activeChatId = localStorage.getItem('activeChatId');
-                
-                renderSidebar();
-                loadChat(activeChatId);
+        function initializeApp() {
+            const savedChats = localStorage.getItem('chatHistory');
+            if (savedChats) {
+                chatHistory = JSON.parse(savedChats);
             }
+            activeChatId = localStorage.getItem('activeChatId');
+            
+            renderSidebar();
+            loadChat(activeChatId);
+        }
         
-            function renderSidebar() {
-                chatHistoryContainer.innerHTML = ''; 
-                chatHistory.forEach(chat => {
-                    const chatBlock = document.createElement('div');
-                    chatBlock.className = 'text-sm text-[#232E51] pl-3 pr-2 py-2 rounded-lg cursor-pointer transition duration-200 flex justify-between items-center';
+        function renderSidebar() {
+            chatHistoryContainer.innerHTML = ''; 
+            chatHistory.forEach(chat => {
+                const chatBlock = document.createElement('div');
+                chatBlock.className = 'text-sm text-[#232E51] pl-3 pr-2 py-2 rounded-lg cursor-pointer transition duration-200 flex justify-between items-center';
+                
+                const titleSpan = document.createElement('span');
+                titleSpan.textContent = chat.title;
+                titleSpan.style.whiteSpace = 'nowrap';
+                titleSpan.style.overflow = 'hidden';
+                titleSpan.style.textOverflow = 'ellipsis';
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.innerHTML = '🗑️';
+                deleteBtn.className = 'p-1 rounded-md hover:bg-red-200 transition-colors opacity-60 hover:opacity-100';
+                
+                deleteBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
                     
-                    const titleSpan = document.createElement('span');
-                    titleSpan.textContent = chat.title;
-                    titleSpan.style.whiteSpace = 'nowrap';
-                    titleSpan.style.overflow = 'hidden';
-                    titleSpan.style.textOverflow = 'ellipsis';
-                    
-                    const deleteBtn = document.createElement('button');
-                    deleteBtn.innerHTML = '🗑️';
-                    deleteBtn.className = 'p-1 rounded-md hover:bg-red-200 transition-colors opacity-60 hover:opacity-100';
-                    
-                    deleteBtn.addEventListener('click', (event) => {
-                        event.stopPropagation();
-                        
-                        if (confirm(`¿Estás seguro de que quieres borrar el chat "${chat.title}"?`)) {
-                            deleteChat(chat.id);
-                        }
-                    });
-
-                    if (chat.id === activeChatId) {
-                        chatBlock.classList.add('bg-[#DCDCDC]', 'shadow-md');
-                    } else {
-                        chatBlock.classList.add('hover:bg-[#E9F2F5]');
+                    if (confirm(`¿Estás seguro de que quieres borrar el chat "${chat.title}"?`)) {
+                        deleteChat(chat.id);
                     }
-
-                    chatBlock.setAttribute('data-chat-id', chat.id);
-                    
-                    chatBlock.addEventListener('click', () => {
-                        loadChat(chat.id);
-                    });
-        
-                    chatBlock.appendChild(titleSpan);
-                    chatBlock.appendChild(deleteBtn);
-        
-                    chatHistoryContainer.appendChild(chatBlock);
                 });
+
+                if (chat.id === activeChatId) {
+                    chatBlock.classList.add('bg-[#DCDCDC]', 'shadow-md');
+                } else {
+                    chatBlock.classList.add('hover:bg-[#E9F2F5]');
+                }
+
+                chatBlock.setAttribute('data-chat-id', chat.id);
+                
+                chatBlock.addEventListener('click', () => {
+                    loadChat(chat.id);
+                });
+        
+                chatBlock.appendChild(titleSpan);
+                chatBlock.appendChild(deleteBtn);
+        
+                chatHistoryContainer.appendChild(chatBlock);
+            });
+        }
+        
+        function deleteChat(chatIdToDelete) {
+            chatHistory = chatHistory.filter(chat => chat.id !== chatIdToDelete);
+            
+            if (activeChatId === chatIdToDelete) {
+                loadChat(null);
             }
             
-            function deleteChat(chatIdToDelete) {
-                chatHistory = chatHistory.filter(chat => chat.id !== chatIdToDelete);
-                
-                if (activeChatId === chatIdToDelete) {
-                    loadChat(null);
-                }
-                
-                saveHistory();
-                renderSidebar();
-            }
+            saveHistory();
+            renderSidebar();
+        }
 
-            function loadChat(chatId) {
-                activeChatId = chatId ? chatId.toString() : null;
-                localStorage.setItem('activeChatId', activeChatId);
-                
-                chatContainer.innerHTML = ''; 
+        function loadChat(chatId) {
+            activeChatId = chatId ? chatId.toString() : null;
+            localStorage.setItem('activeChatId', activeChatId);
+            
+            chatContainer.innerHTML = ''; 
 
-                if (!chatId) {
-                    chatContainer.appendChild(initialView);
-                    initialView.style.display = 'flex'; 
-                } else {
-                    initialView.style.display = 'none'; 
-                    const chat = chatHistory.find(c => c.id === chatId);
-                    if (chat) {
-                        chat.messages.forEach(message => {
-                            displayMessage(message.role, message.content);
-                        });
-                    }
-                }
-                renderSidebar(); 
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }
-
-            // FUNCIÓN MODIFICADA
-            function displayMessage(role, content) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = role === 'user' ? 'user-message' : 'assistant-message';
-
-                if (role === 'assistant') {
-                    // Usamos marked.parse() para procesar el Markdown
-                    messageDiv.innerHTML = marked.parse(content);
-                } else {
-                    messageDiv.textContent = content;
-                }
-                
-                chatContainer.appendChild(messageDiv);
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }
-
-            function saveHistory() {
-                localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-            }
-
-            async function sendMessage() {
-                const userQuestion = userInput.value.trim();
-                if (userQuestion === "") return;
-
+            if (!chatId) {
+                chatContainer.appendChild(initialView);
+                initialView.style.display = 'flex'; 
+            } else {
                 initialView.style.display = 'none'; 
-
-                let currentChat;
-
-                if (!activeChatId) {
-                    const newChatId = Date.now().toString();
-                    currentChat = {
-                        id: newChatId,
-                        title: userQuestion.length > 25 ? userQuestion.substring(0, 25) + '...' : userQuestion, 
-                        messages: []
-                    };
-                    chatHistory.unshift(currentChat); 
-                    activeChatId = newChatId;
-                    localStorage.setItem('activeChatId', activeChatId);
-                } else {
-                    currentChat = chatHistory.find(c => c.id === activeChatId);
-                }
-
-                currentChat.messages.push({ role: 'user', content: userQuestion });
-                displayMessage('user', userQuestion);
-                userInput.value = "";
-                
-                saveHistory();
-                renderSidebar();
-
-                try {
-                    const response = await fetch('http://127.0.0.1:5000/chat', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ question: userQuestion }),
+                const chat = chatHistory.find(c => c.id === chatId);
+                if (chat) {
+                    chat.messages.forEach(message => {
+                        displayMessage(message.role, message.content);
                     });
+                }
+            }
+            renderSidebar(); 
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
 
-                    const data = await response.json();
+        // --- FUNCIÓN displayMessage MODIFICADA CON LIMPIEZA DE LATEX ---
+        function displayMessage(role, content) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = role === 'user' ? 'user-message' : 'assistant-message';
 
-                    if (data.response) {
-                        currentChat.messages.push({ role: 'assistant', content: data.response });
-                        displayMessage('assistant', data.response);
-                    } else {
-                        const errorMsg = 'Error: ' + (data.error || 'Respuesta inesperada del servidor.');
-                        currentChat.messages.push({ role: 'assistant', content: errorMsg });
-                        displayMessage('assistant', errorMsg);
-                    }
-                } catch (error) {
-                    console.error('Error de conexión:', error);
-                    const errorMsg = 'Error de conexión: No se pudo conectar al servidor.';
+            if (role === 'assistant') {
+                let cleanContent = content;
+                
+                // 1. ELIMINAR CUALQUIER BLOQUE DE INICIO/FIN DE LATEX (\[ y \])
+                cleanContent = cleanContent.replace(/\\\[/g, '').replace(/\\\]/g, '');
+                
+                // 2. ELIMINAR LA SINTAXIS DE TEXTO LATEX
+                cleanContent = cleanContent.replace(/\\text\{[^{}]*\}/g, '');
+                
+                // 3. LIMPIAR SÍMBOLOS Y APLICAR SALTO DE LÍNEA ANTES DEL ENCABEZADO (##)
+                // Esto transforma " = ## " en "\n\n## " para que Markdown lo renderice correctamente
+                cleanContent = cleanContent.replace(/=\s*##/g, '\n\n## ');
+
+                // Simplemente parseamos el contenido ya limpio y modificado con marcado
+                messageDiv.innerHTML = marked.parse(cleanContent);
+            } else {
+                messageDiv.textContent = content;
+            }
+            
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        // --- FIN DE LA MODIFICACIÓN ---
+
+        function saveHistory() {
+            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+        }
+
+        async function sendMessage() {
+            const userQuestion = userInput.value.trim();
+            if (userQuestion === "") return;
+
+            initialView.style.display = 'none'; 
+
+            let currentChat;
+
+            if (!activeChatId) {
+                const newChatId = Date.now().toString();
+                currentChat = {
+                    id: newChatId,
+                    title: userQuestion.length > 25 ? userQuestion.substring(0, 25) + '...' : userQuestion, 
+                    messages: []
+                };
+                chatHistory.unshift(currentChat); 
+                activeChatId = newChatId;
+                localStorage.setItem('activeChatId', activeChatId);
+            } else {
+                currentChat = chatHistory.find(c => c.id === activeChatId);
+            }
+
+            currentChat.messages.push({ role: 'user', content: userQuestion });
+            displayMessage('user', userQuestion);
+            userInput.value = "";
+            
+            saveHistory();
+            renderSidebar();
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: userQuestion }),
+                });
+
+                const data = await response.json();
+
+                if (data.response) {
+                    currentChat.messages.push({ role: 'assistant', content: data.response });
+                    displayMessage('assistant', data.response);
+                } else {
+                    const errorMsg = 'Error: ' + (data.error || 'Respuesta inesperada del servidor.');
                     currentChat.messages.push({ role: 'assistant', content: errorMsg });
                     displayMessage('assistant', errorMsg);
                 }
-                
-                saveHistory(); 
+            } catch (error) {
+                console.error('Error de conexión:', error);
+                const errorMsg = 'Error de conexión: No se pudo conectar al servidor.';
+                currentChat.messages.push({ role: 'assistant', content: errorMsg });
+                displayMessage('assistant', errorMsg);
             }
+            
+            saveHistory(); 
+        }
 
-            sendButton.addEventListener('click', sendMessage);
-            userInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
-
-            newChatButton.addEventListener('click', () => {
-                loadChat(null); 
-            });
-
-            initializeApp();
+        sendButton.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
         });
-    </script>
+
+        newChatButton.addEventListener('click', () => {
+            loadChat(null); 
+        });
+
+        initializeApp();
+    });
+</script>
 
 </body>
 </html>
+cursor cursor-pointer
