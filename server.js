@@ -264,6 +264,31 @@ app.get("/top-category", async (req, res) => {
   }
 });
 
+
+app.get("/top-category1", async (req, res) => {
+  try {
+    const result = await prisma.income.groupBy({
+      by: ["category"],
+      _sum: {
+        amount: true,
+      },
+      orderBy: {
+        _sum: {
+          amount: "desc",
+        },
+      },
+      take: 1, 
+    });
+
+    res.json(result[0]); 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error fetching top category" });
+  }
+});
+
+
+
 app.get("/upcoming", async (req, res) => {
   try {
     const expenses = await prisma.expense.findMany({
@@ -280,6 +305,22 @@ app.get("/upcoming", async (req, res) => {
   }
 });
 
+
+app.get("/upcoming1", async (req, res) => {
+  try {
+    const income = await prisma.income.findMany({
+      orderBy: {
+        paymentday: "asc", 
+      },
+      take: 3,
+    });
+
+    res.json(income);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error fetching upcoming income" });
+  }
+});
 
 
 

@@ -32,6 +32,20 @@ async function loadTopCategory() {
     }
   }
 
+
+  async function loadTopCategory1() {
+    try {
+      const res = await fetch("http://localhost:3000/top-category1");
+      const data = await res.json();
+
+      document.getElementById("top-category1").textContent =
+        `${data.category} - $${data._sum.amount}`;
+    } catch (error) {
+      console.error("Error cargando Top Category:", error);
+    }
+  }
+
+
   async function loadUpcoming() {
     try {
       const res = await fetch("http://localhost:3000/upcoming");
@@ -52,15 +66,21 @@ async function loadTopCategory() {
         list.appendChild(li);
       });
 
-     
+    
 
     } catch (error) {
       console.error("Error cargando Upcoming:", error);
     }
   }
 
-  // Ejecutar al cargar la página
+
+
+
+
+
+
   loadTopCategory();
   loadUpcoming();
-
+  loadTopCategory1()
+  loadUpcoming1();
 
