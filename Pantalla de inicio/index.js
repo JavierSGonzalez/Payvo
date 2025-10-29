@@ -73,6 +73,33 @@ async function loadTopCategory() {
     }
   }
 
+  async function loadUpcoming1() {
+    try {
+      const res = await fetch("http://localhost:3000/upcoming1");
+      const data = await res.json();
+
+      const list = document.getElementById("upcoming-list1");
+      const amountLi = document.getElementById("amountLi1")
+      amountLi.innerHTML = "";
+      list.innerHTML = "";
+
+      data.forEach(income => {
+        const li = document.createElement("li");
+        li.textContent = `${income.name} - ${income.paymentday} `;
+        const li2 = document.createElement("li")
+        li2.textContent=`$${income.amount}`
+
+        amountLi.appendChild(li2)
+        list.appendChild(li);
+      });
+
+    
+
+    } catch (error) {
+      console.error("Error cargando Upcoming:", error);
+    }
+  }
+
 
 
 
